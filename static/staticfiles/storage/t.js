@@ -1,13 +1,13 @@
 var cred = {
-    SecretKey : "XnnX1IMAirhGXYHjtmPkrfDVXJn0waxi",
-    SecretId : "AKID93fz7zQv0oLbane4f5IK3dDZfXCc9oa9"
+    SecretKey : "",
+    SecretId : ""
 };
-var Bucket = 'colewe-1258881429';
+var Bucket = 'colew';
 var Region =  'ap-beijing';
 var filePosition = 'upload/';
 
 function myencode(str) {
-    var key = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var key = "";
     var l = key.length;
     var a = key.split("");
     var s = "",b, b1, b2, b3;
@@ -24,7 +24,7 @@ function myencode(str) {
 }
 
 function mydecode(str) {
-    var key = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var key = "";
     var l = key.length;
     var b, b1, b2, b3, d = 0, s;
     s = new Array(Math.floor(str.length / 3));
