@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="staticfiles/login/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="staticfiles/login/css/my-login.css">
+    <link rel="stylesheet" type="text/css" href="staticfiles/slideCheck/slideCheck.css">
+
+</head>
+<body class="my-login-page">
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
+                <div class="brand">
+                    <img src="staticfiles/login/img/logo.jpg">
+                </div>
+                <div class="card fat">
+                    <div class="card-body">
+                        <h2 class="card-title" align="center">注册</h2>
+
+                        <div class="form-group">
+                            <label for="username">请输入你注册的账号</label>
+                            <input id="username" type="text" class="form-control" onblur="checkValid(1)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">请输入你的密码</label>
+                            <input id="password" type="password" class="form-control" onblur="checkValid(2)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="repassword">请再次输入你的密码</label>
+                            <input id="repassword" type="password" class="form-control" onblur="checkValid(3)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nickname">请输入你的昵称</label>
+                            <input id="nickname" type="text" class="form-control" onblur="checkValid(4)">
+                        </div>
+
+                        <div class="verBox">
+                            <div id="imgVer" style="display:inline-block;"></div>
+                        </div>
+
+                        <div class="margin-top20 text-center">
+                            I have already an Account! <a href="login.html">Go to login</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="staticfiles/jquery-3.1.0.min.js"></script>
+<script src="staticfiles/slideCheck/slideCheck.js"></script>
+<script src="staticfiles/login/js/my-login.js"></script>
+<script src="staticfiles/login/js/message.js"></script>
+<script src="staticfiles/jquery.cookie.js"></script>
+
+
+<script>
+    imgVer({
+        el:'$("#imgVer")',
+        width:'304',
+        height:'116',
+        img:[
+            'staticfiles/slideCheck/images/ver.png',
+            'staticfiles/slideCheck/images/ver-1.png',
+            'staticfiles/slideCheck/images/ver-2.png',
+            'staticfiles/slideCheck/images/ver-3.png'
+        ],
+        success:function () {
+            if (c1===false||c2===false||c3===false||c4===false){
+                msgNotify("error","请完善信息!");
+                return;
+            }
+            var checkIsExist  = $.ajax({
+                url:"/api/checkIsExist_Action",
+                type:"post",
+                async:false,
+                data:{
+                    username:$('#username').val()
+                },success:function (data) {
+                    return data
+                }
+            })['responseJSON'];
+            if (checkIsExist){
+                msgNotify("error","账号已存在,请换一个账号!")
+            } else {
+                registerAction()
+            }
+        },error:function () {
+            
+        }
+    });
+
+    function registerAction() {
+        $.ajax({
+            url: "/api/register_Action",
+            type: "post",
+            data: {
+                username: $('#username').val(),
+                password: $('#password').val(),
+                nick_name:$('#nickname').val(),
+                ctime:getCurrentTime()
+            }, success: function () {
+                msgNotify("success","注册成功!");
+                setTimeout(function () {
+                    window.location.href="login.html"
+                },3000)
+            },error:function () {
+                msgNotify("error","服务器错误，注册失败!")
+            }
+        })
+    }
+
+
+    var c1=false,c2=false,c3=false,c4=false;
+    function checkValid(TYPE) {
+        if (TYPE===1){
+            if($('#username').val()===''){
+                msgNotify("error","账号不能为空!");
+                c1 = false;
+            }else if($('#username').val().length<=8){
+                msgNotify("error","账号不能少于8位!");
+                c1 = false;
+            }else {
+                c1 = true;
+            }
+        }
+        if (TYPE===2){
+            if($('#password').val()===''){
+                msgNotify("error","密码不能为空!");
+                c2 = false;
+            }else if($('#password').val().length<=6){
+                msgNotify("error","密码不能少于6位!");
+                c2 = false;
+            }else {
+                c2 = true;
+            }
+        }
+        if (TYPE===3){
+            if($('#password').val()!==$('#repassword').val()){
+                msgNotify("error","两次密码不一致!");
+                c3 = false;
+            } else {
+                c3 = true;
+            }
+        }
+        if (TYPE===4){
+            if($('#nickname').val()===''){
+                msgNotify("error","昵称不能为空!");
+                c4 = false;
+            } else {
+                c4 = true;
+            }
+        }
+    }
+
+    function msgNotify(type,msg) {
+        $.message({
+            type:type,
+            message:'<div style="color:#333;font-weight:bold;font-size:16px;">'+msg+'<div>' +
+                '<span style="color:lightgrey;font-size:small;">3秒后自动关闭</span>',
+            duration:3000
+        })
+    }
+
+    //获取当前时间
+    function getCurrentTime() {
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = change(d.getMonth() + 1);
+        var day = change(d.getDate());
+        var hour = change(d.getHours());
+        var minute = change(d.getMinutes());
+        var second = change(d.getSeconds());
+        function change(t) {
+            if (t < 10) {
+                return "0" + t;
+            } else {
+                return t;
+            }
+        }
+        return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+    }
+
+</script>
+</body>
+
+
+</html>

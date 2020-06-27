@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>new webview</title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
+		
+		<script type="text/javascript" src="../js/util.js" ></script>
+		<style type="text/css">
+			.flex-container {
+				display: -webkit-flex;
+				display: flex;
+				-webkit-justify-content: space-around;
+				justify-content: space-around;
+				width: 100%;
+				height: 100px;
+				margin-top: 43px;
+				background-color: lightgray;
+				/*background-image: url(../img/033.jpg);*/
+				position: relative;
+			}
+			.mui-navigate-right{
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color:cornflowerblue;font-size: 20px;color: white;">
+			<h1 class="mui-title"style="color: white;font-size: 20px;"><b>时光</b></h1>
+			<span style="float: right;margin: 10px;"><b>更多</b></span>
+
+		</header>
+		<div class="mui-content">
+			<button class="sosocity" type="button" style="height: 30px;left: 40px;margin-top: 6px;width: 80%;border-radius: 16px;border-style: none;position: absolute;background: rgba(176, 224, 230, .6);">
+		   	  <span class="placeholder " style="margin-top: -10px;float: right;"><span class="mui-icon mui-icon-search"></span><span class="text">搜索</span></span>
+		</div>
+
+		<script>
+			mui.init();
+			mui("body").on("tap", "#ChuangZuo", function() {
+				mui.openWindow({
+					id: 'ChuangZuo',
+					url: 'Video5/index.html'
+				})
+
+			});
+		</script>
+		
+		
+		<div id="" class="flex-container">
+
+				<div style="text-align: center; height: 80px; width: 80px; border-color:solid 1px white;"><img src="../images/XingQ.png" style="align-content: center;margin:5px;" />
+					<span style="color:;"><b>兴趣</b></span>
+				</div>
+				<div id="ChuangZuo" style="text-align: center; height: 80px; width: 80px; border-color:solid 1px white;"><img src="../images/Chuang.png" style="align-content: center;margin: 5px;" />
+					<span style="color:;"><b>创作</b></span>
+				</div>
+				<div style="text-align: center; height: 80px; width: 80px;"><img src="../images/AD.png" style="align-content: center;margin: 8px;" />
+					<span style=""><b>广告</b></span>
+				</div>
+
+			</div>
+					<div style="height: 25px;background-color:;"></div>
+					<ul class="mui-table-view" style="background-color:;">
+					        <li class="mui-table-view-cell">
+					            <a class="mui-navigate-right">
+					                <img src="../images/FuJinR.png" />
+					                <span style="margin-left: 20px;"><b>附近的人</b></span>
+					            </a>
+					        </li>
+					       <li class="mui-table-view-cell">
+					            <a class="mui-navigate-right">
+					                <img src="../images/KaBao.png" />
+					                <span style="margin-left: 20px;">卡包</span>
+					            </a>
+					        </li>
+					       
+					       <li class="mui-table-view-cell">
+					            <a class="mui-navigate-right">
+					                <img src="../images/TongCheng.png" />
+					                <span style="margin-left: 20px;">哪都有我</span>
+					            </a>
+					        </li>
+					      <li class="mui-table-view-cell">
+					            <a class="mui-navigate-right" href="">
+					                <img src="../images/WuXing.png" />
+					                <span style="margin-left: 20px;">你的五星级</span>
+					            </a>
+					        </li>
+					       
+					    </ul>
+					    <div style="height: 25px;background-color:;"></div>
+					    <ul class="mui-table-view">
+					            
+					          <li class="mui-table-view-cell">
+					            <a class="mui-navigate-right">
+					                <img src="../images/WaiMai.png" />
+					                <span style="margin-left: 20px;">哪都有外卖</span>
+					            </a>
+					        </li>
+					        
+					          <li class="mui-table-view-cell">
+					            <a class="mui-navigate-right">
+					                <img src="../images/GongLv.png" />
+					                <span style="margin-left: 20px;">吾攻秘籍</span>
+					            </a>
+					        </li>
+					        </ul>
+	</body>
+	<!--<script type="text/javascript" src="js/jquery.gradientify.min.js" ></script>
+<script>
+            $(document).ready(function() {
+                $("body").gradientify({
+                    gradients: [
+                        { start: [49,76,172], stop: [242,159,191] },
+                        { start: [255,103,69], stop: [240,154,241] },
+                        { start: [33,229,241], stop: [235,236,117] }
+                    ]
+                });
+            });
+        </script>-->
+</html>

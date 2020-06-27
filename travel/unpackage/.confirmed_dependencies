@@ -1,0 +1,194 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"html/tab-webview-subpage-about.html",
+			"fonts/mui.ttf",
+			"fonts/iconfont.ttf",
+			"js/util.js",
+			"html/tab-webview-subpage-chat.html",
+			"html/sub2.html",
+			"html/imgs/005.jpg",
+			"html/cssd/bootstrap.min.css",
+			"html/js/jquery.bootstrap.newsbox.min.js",
+			"html/cssd/bootstrap-theme.min.css",
+			"css/mui.css",
+			"html/cssd/default.css",
+			"html/cssd/normalize.css",
+			"html/cssd/site.css"
+		],
+		"refer": [
+			"html/tab-webview-subpage-setting.html",
+			"html/tab-webview-subpage-chat.html",
+			"html/tab-webview-subpage-contact.html",
+			"html/tab-webview-subpage-about.html",
+			"html/new-webview.html",
+			"html/menu.html",
+			"html/scan.html",
+			"html/sosopic.html",
+			"html/QQmuisc.html",
+			"html/sub2.html",
+			"html/tab-top-webview-main.html",
+			"html/city.html",
+			"html/tam.html",
+			"html/ZX.html",
+			"html/video-js/tam.html",
+			"html/CityL.html",
+			"html/gugongshow.html",
+			"html/meishishow.html",
+			"html/map.html",
+			"html/Logoin/index.html"
+		]
+	},
+	"launch.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"html/tab-webview-subpage-about.html"
+		],
+		"refer": [
+			"html/tab-webview-subpage-setting.html",
+			"html/tab-webview-subpage-chat.html",
+			"html/tab-webview-subpage-contact.html",
+			"html/tab-webview-subpage-about.html"
+		]
+	},
+	"html/tab-webview-subpage-setting.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.min.js"
+		],
+		"refer": []
+	},
+	"html/tab-webview-subpage-about.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"js/util.js"
+		],
+		"refer": []
+	},
+	"html/tab-webview-subpage-chat.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"html/tab-webview-subpage-contact.html": {
+		"resources": [
+			"images/60x60.gif",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"html/new-webview.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"html/LUPi.html",
+			"html/Video5/index.html"
+		]
+	},
+	"html/sosopic.html": {
+		"refer": [
+			"index.html"
+		]
+	},
+	"html/sub2.html": {
+		"refer": [
+			"html/CityL.html",
+			"html/YouJi.html",
+			"html/Dyou.html",
+			"html/music/Kugou.html",
+			"html/Caidan.html",
+			"html/iChoseCity.html",
+			"html/beijing.html",
+			"html/city.html"
+		]
+	},
+	"html/CityL.html": {
+		"resources": [
+			"html/bb.html"
+		],
+		"refer": [
+			"html/bb.html",
+			"html/Fz.html"
+		]
+	},
+	"html/tab-top-webview-main.html": {
+		"resources": [
+			"html/CityL.html"
+		],
+		"refer": [
+			"html/CityL.html"
+		]
+	},
+	"html/YouJi.html": {
+		"refer": [
+			"html/article.html",
+			"html/WYouJi.html"
+		]
+	},
+	"html/menu.html": {
+		"refer": [
+			"html/tripLogo/index.html",
+			"html/LuChi.html",
+			"html/MenuSharesub.html",
+			"html/uploader.html",
+			"html/Logoin/index.html",
+			"html/searchtelephone.html"
+		],
+		"resources": [
+			"css/mui.min.css"
+		]
+	},
+	"html/tripLogo/index.html": {
+		"refer": [
+			"html/tripLogo/index1.html"
+		]
+	},
+	"html/Logoin/index.html": {
+		"refer": [
+			"html/Logoin/index1.html",
+			"html/Logoin/city.html",
+			"index.html"
+		]
+	},
+	"html/beijing.html": {
+		"refer": [
+			"html/meishi.html"
+		]
+	},
+	"html/meishi.html": {
+		"refer": [
+			"html/beijing.html"
+		]
+	},
+	"html/Caidan.html": {
+		"refer": [
+			"html/localhost.html",
+			"html/fabu.html",
+			"html/List.html",
+			"html/Lshe.html"
+		]
+	},
+	"html/music/Kugou.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js"
+		]
+	},
+	"html/Logoin/city.html": {
+		"refer": [
+			"html/Logoin/index.html"
+		]
+	}
+}

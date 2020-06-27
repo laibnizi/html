@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			#scanContainer {
+				width: 100%;
+				height: 100%;
+				margin: auto;
+				top: 40px;
+				left: 0;
+				position: fixed;
+				z-index: 10;
+				background: black;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">扫码</h1>
+
+		</header>
+		<div class="mui-content">
+		</div>
+		<div id="scanContainer"></div>
+
+		<div id="playTips"></div>
+
+		<script src="../js/mui.min.js"></script>
+<!--		<script src="../js/app.js"></script>-->
+		<script type="text/javascript" charset="UTF-8">
+			mui.init({
+				swipeBack: true
+			});
+
+			mui.plusReady(function() {
+				scanAndPay();
+			});
+
+			//扫描二维码和支付
+			function scanAndPay() {
+				// 扫描二维码
+				document.getElementById("scanContainer").style.display = "block";
+				barScan = new plus.barcode.Barcode("scanContainer");
+				//barScan.start(); 开始扫描
+				barScan.start({
+					conserve: true,
+					filename: "_doc/barcode/"
+				});
+				//条码扫描成功事件
+				barScan.onmarked = function(type, code, file) {
+					code = code;
+					//关闭barScan
+					barScan.close();
+					document.getElementById("scanContainer").style.display = "none";
+				};
+				barScan.onerror = function() {
+					mui.toast("扫描失败");
+				}
+			}
+
+			//重写mui.js里面的back方法，安卓点击返回键退出扫描
+			var oldBack = mui.back;
+			mui.back = function() {
+				if(barScan) {
+					//关闭barScan
+					barScan.close();
+					document.getElementById("scanContainer").style.display = "none";
+					barScan = null;
+					return false;
+				} else {
+					//如果没有扫描，则返回
+					oldBack();
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.flex-container {
+				display: -webkit-flex;
+				display: flex;
+				-webkit-justify-content: space-around;
+				justify-content: space-around;
+				width: 100%;
+				height: 120px;
+				/*background-color: lightgrey;*/
+			}
+		</style>
+		
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			
+	 
+	 	//mui.init();
+      	$(function(){
+      		
+      		var msgDom=document.getElementById("picture");
+			 var galleryBtn =document.getElementById("gallery");
+			 galleryBtn.addEventListener("tap",function () {
+			 	plus.gallery.pick(
+			 		 function(path){
+			 		 	var img="";
+			 		 	for(var i in path.files)
+			 		 	img+="<img width=100 height=100 src="+path.files[i]+">";
+			 		 	msgDom.innerHTML=img;
+			 		 	
+			 		 },
+			 		function(e){
+			 			msgDom.innerHTML=e.message;
+			 		},
+			 		{
+			 			filter:"",
+			 			multiple:true
+			 		}
+			 		 
+			 	)
+			 });
+	 
+      		  mui("body").on("tap","#subbtn",function(){
+      		
+      		  	var content = document.getElementById("content");
+      		  	alert(content.value);
+      		  	   var ss =document.getElementById("content").value;
+//    		                  var  picture =   ("#picture").val();
+//    		                  console.log("picture"+picture);
+      		  	if (ss=""||ss==null) {
+      		  		alert("内容不能为空!"); 		
+      		  	} else{
+      		  		
+      		  			alert(ss);
+      		  			mui.ajax('http://10.2.229.216:8080/trip/travelnotescl?action=addone',{
+      		  				data:{
+      		  					"content":ss,
+	      		  				},
+      		  				dataType:'json',//服务器返回json格式数据
+      		  				type:'post',//HTTP请求类型
+      		  				timeout:100,//超时时间设置为10秒；
+      		  				success:function(data){
+      		  					alert("成功")
+      		  					console.log(JSON.stringify(data));/**/
+      		  				var str ="";
+      		  				if (data.length>0) {
+      		  					
+      		  					window.localStorage.setItem("tnid",data[0].userid);
+      		  					window.localStorage.setItem("userName",data[0].username);
+      		  					$(location).attr("href","YouJi.html")
+      		  					
+      		  				} else{
+      		  					alert("错误！"+JSON.stringify(data));
+      		  					console.log(JSON.stringify(data));
+      		  				}
+      		  					
+      		  				},
+      		  				error:function(xhr,type,errorThrown){
+      		  					 alert("连接超时！");
+      		  				}
+      		  			});
+      		  		}
+      		  		
+      		   });
+      		});
+      		  	
+      		  /*	alert("好尴尬过");*/
+      		/*alert("userN=" +userN);*/
+		</script>
+
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav" style="background-color: #74C0F9;">
+			<a class="mui-action-back mui-icon  mui-pull-left" style="color:white;">取消</a>
+			<h1 class="mui-title">写下你的感动</h1>
+			<span class="mui-icon  mui-pull-right"><button id="subbtn" type="button" class="mui-btn mui-btn-royal" style="margin-top: -12px;color: black;"><b>发表</b></button></span>
+		</header>
+		<div class="mui-content">
+			<div style="background-color: white;">
+				<div id="write">
+					<input id="content" style="margin: auto auto; width:100%;height:150px; border-style: none;background-color:white;" placeholder="分享新鲜事"></input>
+					<!--<input type="button" value="发布" class="btn" onclick="add()">	-->
+				</div>
+				<div class="flex-container">
+					<div  style="height: 100px;width: 100px;background-color: lightgray;"><img src="../images/Cemare.png" style="margin: 30px;" id="gallery" />
+					</div>
+					<div id="picture" >
+
+					</div>
+				</div>
+
+			</div>
+			<!--////////////////////-->
+		</div>
+	</body>
+
+</html>

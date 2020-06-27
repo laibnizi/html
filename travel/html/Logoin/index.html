@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=5.0" charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>登陆界面</title>
+<link href="css/reset.css" rel="stylesheet">
+<link rel="stylesheet" href="css/font.css" />
+<link rel="stylesheet" href="css/swiper-3.3.1.min.css" />
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/Homepage.css" />
+<link rel="stylesheet" href="css/ModularForm.css" />
+<link rel="stylesheet" href="css/LoginRegister.css" />
+<script type="text/javascript" src="js/Libs/jquery.min.js" ></script>
+<script type="text/javascript" src="js/Libs/jquery.json.js" ></script>
+<script type="text/javascript" src="font1/iconfont.js" ></script>
+<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<style type="text/css">
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<!--页头-->
+	<header class="header" style="background-color: lightskyblue;">
+		<a href="#" class="return floatL"></a>
+		<h3 class="floatL Logo headTit">登录</h3>
+	</header>				
+	<section class="main" id="groupForm">
+		<div class="DeInfo_Inpet DeInfo_Inpet2">
+			<div class="DeInfoInput LoginInput">
+				<label class="icon-1 floatL">
+				</label>
+				<label style="display: none;">用户名/手机号</label>
+				<input id="username" placeholder="请输入用户名/手机号" class="DeInfo_text" data-regtest="^1[3|4|5|7|8]\d{9}$ ">
+			    	<svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-dengluyonghuming"></use>
+                   </svg>
+			</div>
+			<div class="DeInfoInput LoginInput">
+				<label class="icon-11 floatL">
+				</label>
+				<label style="display: none;">密码</label>
+				<input  id="password" placeholder="请输入密码" class="DeInfo_text" data-regtest="\d">
+			    	<svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-1"></use>
+                    </svg></label>
+			</div>
+			<p class="errorShow">不能为空</p>
+			<div class="optCont">
+				<div class="floatL OptContInfo">
+					<div class="floatL OptInfoL">
+						<input type="checkbox" data-style="checkeds" class="checkedNum" />
+						<label class="icon-30"></label>
+					</div>
+					<div class="floatL OptInfoR">是否记住用户名</div>
+				</div>
+				<div class="floatL OptContInfo">
+					<div class="floatL OptInfoL">
+						<input type="checkbox" data-style="checkeds" class="checkedNum" />
+						<label class="icon-30"></label>
+					</div>
+					<div class="floatL OptInfoR">是否记住密码</div>
+				</div>
+			</div>
+			<div class="optCont">
+				<div class="floatL OptContInfo OptContInfo2" >
+					<div class="floatL OptInfoL">
+						<input type="checkbox" data-style="checkeds" class="checkedNum" />
+						<label class="icon-30"></label>
+					</div>
+					<div class="floatL OptInfoR">已阅读及同意服务条款</div>
+				</div>
+			</div>
+		</div>
+		<!--按钮-->
+		<div class="BtnCont">
+			<button class="BigBtn" id="yanzheng">立即登录</button>
+		</div>
+		<div class="loginLink">
+			<div class="loginLink_text"><a href="index1.html">注册</a><span>|</span><a href="index1.html">忘记密码</a></div>
+		</div>
+	</section>
+	
+</div>
+<script type="text/javascript" src="js/Libs/swiper-3.3.1.jquery.min.js" ></script>
+<script type="text/javascript" src="js/common.js" ></script>
+<script type="text/javascript" src="js/yanzheng.js" ></script>
+	<script>
+			$(function () {
+				$("#yanzheng").click(function () {
+					var username1 = document.getElementById("username").value;
+					var password1 = document.getElementById("password").value;
+						$.ajax('http://10.2.229.216:8080/trip/usercl?action=login',{
+						data:{
+							'username': username1,
+							'password': password1
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:100,//超时时间设置为10秒；
+						success:function(data){
+								alert(JSON.stringify(data));
+								
+								document.location.href="../../index.html";
+								
+								
+						},
+						error:function(xhr,type,errorThrown){
+							alert("请求失败");
+						}
+					});
+				
+				});
+			});
+		</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>有戏旅游欢迎您！</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#B03060;">
+<head>
+    <meta charset="UTF-8">
+    <title>LingWei-CS</title>
+    <link rel="stylesheet" href="staticfiles/emoji/myemojiPl.css">
+    <link rel="stylesheet" href="staticfiles/layui/layer/layui.css">
+    <link rel="stylesheet" href="staticfiles/dist/style.css">
+</head>
+<body style="background-image: url(staticfiles/login/img/bgg27.png);background-size: 100%;background-repeat: no-repeat;">
+<!-- partial:index.partial.html -->
+<div class="container clearfix" style="width: 1200px;margin-bottom: 200px;">
+	  <div class="my-info" style="position: fixed;background-color:#B03060;width: 1200px;">
+            <input type="file" style="display: none">
+            <img class="my-header" src="" title="" onclick="{$('.my-info input').click()}">
+            <button type="button" class="layui-btn layui-btn-xs layui-btn-normal" style="margin-left: 25%;margin-top: 5px;display: none">保存</button>
+            <div style="margin-left: 20px; color: white; float: right; margin-right: 40px;margin-top: 15px;" id="news">
+            	<span >客户申请</span>
+                <i class="layui-icon layui-icon-username" style="font-size: 27px;cursor: pointer;"></i>
+                
+            </div>
+            
+        </div>
+  <div class="chat-header clearfix" style="position: fixed;margin-left: 250px;margin-top: 15px;">
+            <img src="" class="header-img" style="float: left" id="header">
+            <div class="chat-about"  style="display:inline-block;">
+                <div class="chat-with" style="margin-left: 15px;color: whitesmoke;"></div>
+                 <div class="chat-num-messages" style="margin-left: 20px;display: inline-block;margin-top: 10px;"><span style="height: 40px;width: 55px;border-radius:40% ;background-color: red;color: white;"></span></div>
+            </div>
+           
+        </div>
+    <div class="people-list" style="width: 20%;margin-top: 80px;background-color: rgba(240, 255, 255, 0.25);">
+      
+        <div class="people-info">
+            <div class="search">
+                <input type="text" placeholder="搜索" id="search" style="background-color: rgba(240, 255, 255, 0.25);">
+                <i class="fa fa-search"></i>
+            </div>
+            <div style="margin-left: 20px;margin-bottom: 3px">
+                <span>好友列表</span>
+                (<span>0</span>)
+                <button id="addFriend" type="button" class="layui-btn layui-btn-xs layui-btn-normal"
+                        style="margin-right: 29px;float: right">添加好友
+                </button>
+            </div>
+            <br>
+            <ul class="list">
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="chat" style="width:80%;display: none;background-image: url(staticfiles/login/img/cbg.jpg);margin-top: 80px;">
+      
+        <!-- end chat-header -->
+        <div class="chat-history">
+            <ul>
+
+            </ul>
+
+        </div> <!-- end chat-history -->
+
+        <div class="Main" style="margin: 10px;background-color: rgba(240, 255, 255, 0.25);">
+            <div class="Input_Box" style="background-color: rgba(240, 255, 255, 0.25);">
+            	 <div class="Input_Foot" style="background-color: rgba(240, 255, 255, 0.25);">
+                    <a class="imgBtn" id="emjio" href="javascript:void(0);" style="font-size: 20px">
+                        <img src="staticfiles/emoji/emoji.png" style="width: 25px;height: 25px">
+                    </a>
+                    <input type="file" id="file" style="display:none;background-color: rgba(240, 255, 255, 0.25);">
+                    <!--这个不起作用,下面按钮点击触发这个input-->
+                    <a class="imgBtn" id="img" href="javascript:void(0);" onclick="{$('#file').click()}">
+                        <img src="staticfiles/emoji/photo.png" style="width: 23px;height: 23px">
+                    </a>
+                    <a class="postBtn">发送</a>
+                </div>
+                <div contenteditable="true" class="Input_text" style="min-height: 130px"></div>
+               
+            </div>
+            <div class="faceDiv">
+                <section class="emoji_container">
+                </section>
+                <section class="emoji_tab"></section>
+            </div>
+        </div>
+    </div>
+</div> <!-- end container -->
+<!-- partial -->
+<script src="staticfiles/jquery-3.1.0.min.js"></script>
+<script src="staticfiles/dist/handlebars.min.js"></script>
+<script src="staticfiles/dist/list.min.js"></script>
+<script src="staticfiles/layui/layer/layer.js"></script>
+<script src="staticfiles/layui/layui.js"></script>
+<script src="staticfiles/storage/cos-js-sdk-v5.js"></script>
+<script src="staticfiles/storage/t.js"></script>
+<script src="staticfiles/emoji/myemojiPl.js"></script>
+<script src="staticfiles/jquery.cookie.js"></script>
+<script>
+
+
+    var token = $.cookie("token");
+    var u = eval("(" + $.ajax({
+        url: "/api/parseToken",
+        type: 'post',
+        data: {token: token},
+        async: false,
+        success: function (data) {
+            return data
+        }
+    }).responseText + ")");
+
+    $(function () {
+        $('.my-header').attr("src",u['header_img']);
+        $('.my-info img').attr("title",u['nick_name']);
+    })
+</script>
+
+<script>
+
+    //这个f存储好友信息
+    var f = {};
+    //这个o存储申请好友列表
+    var o = [];
+    $(function () {
+        $.ajax({
+            url: '/api/getFriends_action',
+            type: 'post',
+            dataType: 'json',
+            data: {user_id: u['username']},
+            success: function (data) {
+                $('.people-info span').eq(1).html(data.length);
+                for (var i = 0; i < data.length; i++) {
+                    $('.people-list .list').append(getPeopleHtml(data[i]))
+                }
+                f = data;
+            }
+        });
+
+        $.ajax({
+            url: '/api/getApplyFriend_action',
+            type: 'post',
+            data: {friend_id: u['username']},
+            success: function (data) {
+                var l = 0;
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i]['isaccept'] === 0) {
+                        l++;
+                    }
+                }
+                if (l !== 0) {
+                    $('#news').append('<span class="layui-badge">' + l + '</span>');
+                }
+                o = data;
+            }
+        });
+    });
+
+
+    var l = {};//这个存当前聊天对方的信息
+    function initChatRecord(t){
+        $('.chat').show();
+        //显示当前聊天对象
+        $('.list li').css("background", "rgb(229,229,229)");
+        $('#friend-id-' + t['friend_id']).css("background", "rgb(195,196,197)");
+        //前端相关操作
+        $('.chat-with').html(t['friend_nick_name']);
+        $('#header').attr("src", t['friend_header_img']);
+        $('.chat-history ul').attr("id", 'chat-id-' + t['friend_id']);//这个用好友id对会话框做唯一标识
+        $('.chat-history ul').empty();
+        //每次切换好友更新l
+        l = {
+            friend_id: t['friend_id'],
+            friend_nick_name: t['friend_nick_name'],
+            friend_header_img: t['friend_header_img']
+        };
+        $.ajax({
+            url: '/api/getChatRecord_action',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                user_id: u['username'],
+                friend_id: t['friend_id'],
+                isUpdate: t['notread_num'] === 0 ? 0 : 1
+            }, success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (u['username'] === data[i]['sender_id']) {
+                        $('.chat-history ul').append(getMsgHtml(data[i], 0))
+                    } else {
+                        $('.chat-history ul').append(getMsgHtml(data[i], 1))
+                    }
+                }
+                if (data.length !== 0) {
+                    $('#friend-id-' + t['friend_id'] + ' .msg').html(data[data.length - 1]['content'].substring(0, 8) + '...')
+                }
+                $('#friend-id-' + t['friend_id'] + ' .layui-badge').html(0);
+                $('#friend-id-' + t['friend_id'] + ' .layui-badge').hide();
+                $('.chat-num-messages span').html(data.length);
+                scrollTo($('.chat-history'))
+            }
+        });
+    }
+
+
+    var url = "ws://localhost:9110/Websocket/" + u['username'];
+    if ('WebSocket' in window) {
+        var ws = new WebSocket(url)
+    } else {
+        layer.msg('你的浏览器不支持Websocket!')
+    }
+    ws.onopen = function () {
+
+    };
+    ws.onmessage = function (ev) {
+        var json = eval("(" + ev.data + ")");
+        if (json['targetID'] === "syspush") {
+            for (var i = 0; i < json['all_user_id'].length; i++) {
+                $('#friend-id-' + json['all_user_id'][i] + " .layui-badge-dot").css("background-color", "#00FA9A");
+                $('#friend-id-' + json['all_user_id'][i] + " .isonline").html("&nbsp;在线&nbsp;")
+            }
+        }
+        if (json['targetID'] === "onopen") {
+            $('#friend-id-' + json['user_id'] + " .layui-badge-dot").css("background-color", "#00FA9A");
+            $('#friend-id-' + json['user_id'] + " .isonline").html("&nbsp;在线&nbsp;")
+        }
+        if (json['targetID'] === "onclosed") {
+            $('#friend-id-' + json['user_id'] + " .layui-badge-dot").removeAttr("style");
+            $('#friend-id-' + json['user_id'] + " .isonline").html("&nbsp;离线&nbsp;")
+        }
+        if (json['targetID'] === "send") {
+            $('#friend-id-' + json['receiver_id'] + ' .msg').html(json['content']);
+            var e = $('#friend-id-' + json['receiver_id'] + ' .layui-badge');
+            e.html(parseInt(e) + 1);
+            e.show();
+            var e1 = $('.chat-history ul');
+            if (e1.attr('id') === 'chat-id-' + json['sender_id']) {
+                e1.append(getMsgHtml(json, 1));
+                scrollTo($('.chat-history'));//滑到最底部
+            }
+            var e3 = $('.chat-num-messages span');
+            e3.html(parseInt(e3.html()) + 1)
+        }
+
+    };
+
+    ws.onclose = function (ev) {
+        ws.close();
+    };
+
+
+    $('.my-info input').change(function () {
+        var e = $('.my-info input')[0].files[0];
+        if (e.type === "image/jpg" || e.type === "image/gif" ||
+            e.type === "image/jpeg" || e.type === "image/png" ||
+            e.type === "image/GIF" || e.type === "image/JPG" ||
+            e.type === "image/PNG") {
+            var src = '';
+            if (window.createObjectURL != undefined) {
+                src = window.createObjectURL(e);
+            } else if (window.URL != undefined) {
+                src = window.URL.createObjectURL(e);
+            } else if (window.webkitURL != undefined) {
+                src = window.webkitURL.createObjectURL(e);
+            }
+            $('.my-info img').attr("src",src);
+            $('.my-info button').show();
+        }else {
+            layer.msg("图片格式不正确!")
+        }
+    });
+    $('.my-info button').click(function () {
+        var file =  $('.my-info input')[0].files[0];
+        var cos = new COS({
+            SecretKey: cred.SecretKey,
+            SecretId: cred.SecretId
+        });
+        cos.putObject({
+            Bucket: Bucket,
+            Region: Region,
+            Key: filePosition + uuid() + file.name.substring(file.name.indexOf(".")),//upload为上传文件夹
+            Body: file// 上传文件对象
+        }, function (err, data) {
+            if (!err) {
+                $.ajax({
+                    url:"/api/changeHeader_action",
+                    type:"post",
+                    data:{
+                        username:u['username'],
+                        header_img:'http://' + data.Location
+                    },success:function () {
+                        layer.msg("上次完成!", {icon: 1, time: 2000});
+                        $('.my-info img').attr("src",'http://' + data.Location);
+                        $('.my-info button').hide();
+                    },error:function () {
+                        layer.msg("上次失败!", {icon: 2, time: 2000})
+                    }
+                })
+            } else {
+                layer.msg("图片上传错误!", {icon: 2, time: 2000})
+            }
+        });
+    });
+
+
+    $('#addFriend').click(function () {
+        layer.open({
+            type: 1,
+            title: '添加好友',
+            area: ['500px', '400px'],
+            content: '<div class="layui-input-inline" style="margin-left: 32%;margin-top: 20px">\n' +
+                '<input id="key" type="text" placeholder="输入对方id或昵称" class="layui-input" style="height: 30px;">\n' +
+                '</div><button onclick="searchUser()" type="button" class="layui-btn layui-btn-xs layui-btn-normal" style="margin-top: 20px; margin-left: 5px">查找</button>' +
+                '<div id="userList"></div>'
+        });
+    });
+
+
+    $('#news i').click(function () {
+        var html = '', exp;
+        for (var i = 0; i < o.length; i++) {
+            exp = o[i]['isaccept'] === 0 ? ('<span style="cursor: pointer; color: #1E9FFF;float: right" onclick="acceptAction(\'' + o[i]['user_id'] + '\')">同意</span>') :
+                ('<span style="color: grey;float: right">已同意</span>');
+            html += '<div style="margin-top: 10px" id="apply-' + o[i]['user_id'] + '"><div style="margin-left: 15px;margin-bottom: 5px; color: rgb(122,124,126)">' + o[i]['ctime'] + '</div><div style="width: 90%;display: inline-block;margin-left: 15px;border: solid 1px rgb(236,237,237)">' +
+                '<img src="' + o[i]['user_header_img'] + '" style="width: 50px;height: 50px;border-radius: 50%;margin-top: 10px;float: left;margin-left: 10px">' +
+                '<div style="float: left;display: inline-block;margin-top: 15px;margin-left: 15px;margin-bottom: 10px;width: 75%" class="apply-info"><span style="font-size: 20px">' + o[i]['user_nick_name'] + '</span><span>(' + o[i]['user_id'] + ')</span><br>' +
+                '<span style="color: rgb(122,124,126)">附加信息：' + o[i]['reason'] + '</span><br><span>申请添加你为好友</span>' + exp + '</div>' +
+                '</div></div>'
+        }
+        if (o.length === 0) {
+            html += '<img src="staticfiles/nodata.png" style="margin-left: 19%">'
+        }
+        layer.open({
+            type: 1,
+            title: '申请列表',
+            area: ['400px', '500px'],
+            content: '<div style="margin-top: 10px" id="applyList">' + html + '</div>'
+        });
+
+    });
+
+    function acceptAction(t) {
+        $.ajax({
+            url: '/api/acceptFriend_action',
+            type: 'post',
+            data: {
+                user_id: u['username'],
+                friend_id: t,
+                ctime: getCurrentTime(),
+                reason: '',
+                type: 1
+            },
+            success: function () {
+                $('#apply-' + t + ' .apply-info span').eq(4).remove();
+                $('#apply-' + t + ' .apply-info').append('<span style="color: grey;float: right">已同意</span>');
+                layer.msg("已同意!", {icon: 1, time: 2000});
+            }, error: function () {
+                layer.msg("错误!", {icon: 2, time: 2000});
+            }
+        });
+    }
+
+    function addAction(t) {
+        if (t === u['username']) {
+            layer.msg("你不能添加你自己!", {icon: 2, time: 2000});
+            return;
+        }
+        for (var i = 0; i < f.length; i++) {
+            if (t === f[i]['friend_id']) {
+                layer.msg("对方已经是你好友了!");
+                return;
+            }
+        }
+        $.ajax({
+            url: '/api/addFriend_action',
+            type: 'post',
+            data: {
+                user_id: u['username'],
+                friend_id: t,
+                reason: $('#user-' + t + ' input').val(),
+                ctime: getCurrentTime(),
+                type: 0
+            },
+            success: function () {
+                layer.msg("已发送请求!", {icon: 1, time: 2000});
+            }, error: function () {
+                layer.msg("错误!", {icon: 2, time: 2000});
+            }
+        });
+    }
+
+    function searchUser() {
+        var key = $('#key').val();
+        if (key === '' || key === null) {
+            layer.msg('key不能为空!');
+            return;
+        }
+        $.ajax({
+            url: '/api/searchUser_action',
+            type: 'post',
+            dataType: 'json',
+            data: {key: key},
+            success: function (data) {
+                $('#userList').empty();
+                if (data.length === 0) {
+                    $('#userList').append('<img src="staticfiles/nodata.png" style="margin-left: 25%">');
+                    return;
+                }
+                for (var i = 0; i < data.length; i++) {
+                    $('#userList').append('<div style="margin-top: 10px" id="user-' + data[i]['username'] + '"><div style="width: 90%;height: 70px;margin-left: 25px; background-color: #CD6090; border: solid 1px rgb(236,237,237)">' +
+                        '<img src="' + data[i]['header_img'] + '" style="width: 50px;height: 50px;margin-top: 10px;float: left;margin-left: 15px">' +
+                        '<div style="float: left;display: inline-block;margin-top: 15px;margin-left: 15px;height: 40px;width: 75%"><span style="font-size: 20px">' + data[i]['nick_name'] + '</span><span>(' + data[i]['username'] + ')</span><br>' +
+                        '<span style="color: grey">请输入添加理由(可空)&nbsp;</span><input><button type="button" class="layui-btn layui-btn-xs layui-btn-normal" style="float: right" onclick="addAction(\'' + data[i]['username'] + '\')">添加</button>' + '</div>' +
+                        '</div>' +
+                        '</div>')
+                }
+            }
+        });
+    }
+
+
+    $('.postBtn').click(function () {
+        if ($('.Input_text').html() === '' || $('.Input_text') === null) {
+            layer.msg('内容不能为空!');
+            return;
+        }
+        var e = $('#file')[0].files[0];
+        if (e === 'undefined' || e == null) {
+            postAction();
+            $('.Input_text').html("")
+        } else {
+            uploadFile(e);
+        }
+        var e1 = $('.chat-num-messages span');
+        e1.html(parseInt(e1.html()) + 1);
+    });
+
+    function postAction() {
+        var ctime = getCurrentTime();
+        var content = $('.Input_text').html();
+        $('.chat-history ul').append(getMsgHtml({content: content, ctime: ctime}, 0));
+        $('#friend-id-' + l['friend_id'] + " .msg").html(content.substring(0, 8) + '...');
+        scrollTo($('.chat-history'));//滑到最底部
+        ws.send(JSON.stringify({    //实时推送信息
+            targetID: "send",
+            sender_id: u['username'],
+            receiver_id: l['friend_id'],
+            content: content,
+            ctime: ctime
+        }));
+        insertChatRecord(u['username'], l['friend_id'], content, ctime);//插入数据库
+    }
+
+    //插入数据库
+    function insertChatRecord(sender_id, receiver_id, content, ctime) {
+        var t = {
+            sender_id: sender_id,
+            receiver_id: receiver_id,
+            content: content,
+            ctime: ctime
+        };
+        $.ajax({
+            url: '/api/insertChatRecord_action',
+            type: 'post',
+            data: t
+        });
+
+    }
+
+    //预览
+    $('#file').change(function () {
+        var e = $('#file')[0].files[0];
+        if (e.type === "image/jpg" || e.type === "image/gif" ||
+            e.type === "image/jpeg" || e.type === "image/png" ||
+            e.type === "image/GIF" || e.type === "image/JPG" ||
+            e.type === "image/PNG") {
+            $('.Input_text').append(getImgHtml(e))
+        } else {
+            layer.msg("图片格式错误!", {icon: 2, time: 2000});
+            $('#file').val('')//清空文件
+        }
+
+    });
+
+    function uploadFile(file) {
+        var cos = new COS({
+            SecretKey: cred.SecretKey,
+            SecretId: cred.SecretId
+        });
+        cos.putObject({
+            Bucket: Bucket,
+            Region: Region,
+            Key: filePosition + uuid() + file.name.substring(file.name.indexOf(".")),//upload为上传文件夹
+            Body: file// 上传文件对象
+        }, function (err, data) {
+            if (!err) {
+                $('.Input_text .showImg').attr("src", 'http://' + data.Location);//替换地址
+                postAction();
+                $('.Input_text').html("")
+            } else {
+                layer.msg("图片上传错误", {icon: 2, time: 2000})
+            }
+        });
+    }
+
+    function getPeopleHtml(t) {
+        //这里判断有没有未读信息
+        var c = t['notread_num'] === 0 ? ('<span class="layui-badge" style="display: none">' + t['notread_num'] + '</span>') : ('<span class="layui-badge">' + t['notread_num'] + '</span>');
+        var html = '<li class="clearfix" onclick="initChatRecord(' + JSON.stringify(t).replace(/\"/g, "'") + ')" id="friend-id-' + t['friend_id'] + '" style="cursor: pointer;">\n' +
+            '                <div class="border-about">' +
+            '                <img class="header-img" src="' + t['friend_header_img'] + '" title="' + t['friend_id'] + '">\n' +
+            '                <div class="about">\n' +
+            '                    <div class="name">' + c + '&nbsp;&nbsp;' + t['friend_nick_name'] + '</div>\n' +
+            '                    <div class="status">\n' +
+            '                    <span class="layui-badge-dot"></span><span class="isonline">&nbsp;离线&nbsp;</span><span class="msg"></span>\n' +
+            '                    </div>\n' +
+            '                </div>\n' +
+            '                </div>\n' +
+            '        </li>';
+        return html;
+    }
+
+    function getMsgHtml(t, k) {
+        //这里t是信息记录,k识别主体,l存对方名称和头像
+        var html = k === 0 ? '<li class="clearfix">\n' +
+            '                    <div class="message-data align-right">\n' +
+            '                        <div class="message-data">\n' +
+            '                            <span class="message-data-time">' + t['ctime'] + '</span>\n' +
+            '                            <span class="message-data-name">' + u['nick_name'] + '&nbsp;<i class="fa fa-circle online"></i></span>\n' +
+            '                        </div>\n' +
+            '                        <img class="header-img" src="' + u['header_img'] + '" style="float: right;margin-left: 10px;">\n' +
+            '                        <div class="message my-message" style="float: right">' + t['content'] + '</div>\n' +
+            '                    </div>\n' +
+            '                </li><br>'
+            :
+            '<li class="clearfix">\n' +
+            '                    <div class="message-data align-left">\n' +
+            '                        <div class="message-data">\n' +
+            '                            <span class="message-data-name"><i class="fa fa-circle online"></i>&nbsp;' + l['friend_nick_name'] + '</span>\n' +
+            '                            <span class="message-data-time">' + t['ctime'] + '</span>\n' +
+            '                        </div>\n' +
+            '                        <img class="header-img" src="' + l['friend_header_img'] + '" style="float: left;margin-right: 10px">\n' +
+            '                        <div class="message other-message" style="float: left">' + t['content'] + '</div>\n' +
+            '                    </div>\n' +
+            '                </li><br>';
+        return html;
+    }
+
+    $('.Main').myEmoji();
+
+    $("#search").bind("input propertychange", function () {
+        search($('#search').val())
+    });
+
+    function search(key) {
+        var eles = $('.list li');
+        for (var i = 0; i < eles.length; i++) {
+            if (eles.eq(i).find('.name').html().indexOf(key) < 0) {
+                eles.eq(i).hide()
+            } else {
+                eles.eq(i).show()
+            }
+        }
+    }
+
+
+    //获取当前时间
+    function getCurrentTime() {
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = change(d.getMonth() + 1);
+        var day = change(d.getDate());
+        var hour = change(d.getHours());
+        var minute = change(d.getMinutes());
+        var second = change(d.getSeconds());
+        function change(t) {
+            if (t < 10) {
+                return "0" + t;
+            } else {
+                return t;
+            }
+        }
+        return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+    }
+
+    function scrollTo(e) {
+        e.scrollTop(e[0].scrollHeight);
+    }
+
+    function getImgHtml(file) {
+        var src = '';
+        if (window.createObjectURL != undefined) {
+            src = window.createObjectURL(file);
+        } else if (window.URL != undefined) {
+            src = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) {
+            src = window.webkitURL.createObjectURL(file);
+        }
+        return '<img id="' + file.name + '" class="showImg" src="' + src + '" style="max-width: 200px;max-height: 150px"/>';
+    }
+
+    function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4";
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
+        s[8] = s[13] = s[18] = s[23] = "-";
+        return s.join("");
+    }
+</script>
+</body>
+</html>

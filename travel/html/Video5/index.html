@@ -1,0 +1,598 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../videoCss/video.css" />
+	<script type="text/javascript">
+		mui.init();
+
+		window.onload = initBannerLink;
+		var theAd = 0;
+		var adURL = new Array("baidu.com", "kugou.com", "qinshimoon.com");
+		var adImages = new Array("../../img/12.jpg", "../../img/08.jpg", "../../img/10.jpg");
+
+		function initBannerLink() {
+			if(document.getElementById("adBanner").parentNode.tagName == "A") {
+				document.getElementById("adBanner").parentNode.onclick = newLocation;
+			}
+			rotate()();
+		}
+
+		function newLocation() {
+			document.location.href = "http://www." + adURL[theAd];
+			return false;
+		}
+
+		function rotate() {
+			theAd++;
+			if(theAd == adImages.length) {
+				theAd = 0;
+			}
+			document.getElementById("adBanner").src = adImages[theAd];
+			setTimeout(rotate, 3 * 1000);
+		}
+	</script>
+	<style>
+		.mui-bar {
+			box-shadow: none;
+			background: white;
+			height: 50px;
+		}
+		
+		.mui-bar .mui-icon {
+			margin-top: 4px;
+			font-size: 28px;
+			color: #999999;
+		}
+		
+		.mui-bar-nav.mui-bar .mui-icon {
+			padding-left: 5px;
+		}
+		
+		.mui-bar .mui-title {
+			margin-top: 6px;
+			color: #2f2f2f;
+			font-weight: normal;
+		}
+		
+		.more {
+			margin-top: 16px;
+			margin-right: 5px;
+		}
+		
+		.mui-bar:after {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			height: 1px;
+			content: '';
+			-webkit-transform: scaleY(.5);
+			transform: scaleY(.5);
+			background-color: #dadada;
+		}
+		
+		body {
+			background: white;
+		}
+		
+		.mui-content {
+			padding: 0px;
+			margin-top: 10px;
+			background: white;
+		}
+		
+		.user_txt {
+			padding-left: 1rem;
+			height: 25px;
+			margin: 0px;
+			margin-bottom: 20px;
+		}
+		
+		.news_title {
+			font-size: 1.4rem;
+			line-height: 1.5;
+			font-weight: 500;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			margin-top: .9rem;
+			margin-bottom: .3rem;
+		}
+		
+		.user_img {
+			width: 25px;
+			height: 25px;
+			border-radius: 25px;
+			margin-right: 5px;
+		}
+		
+		.user_name,
+		.news_time {
+			position: relative;
+			top: -8px;
+			font-size: 12px;
+		}
+		
+		.news_time {
+			margin-left: 10px;
+		}
+		
+		.text_dome {
+			padding: 10px;
+		}
+		
+		.text_dome b {
+			color: #000000;
+			font-size: 16px;
+		}
+		
+		#openvideo {
+			height: 50px;
+			line-height: 50px;
+			color: white;
+			text-align: center;
+			position: fixed;
+			z-index: 110;
+			bottom: 0px;
+			width: 100%;
+			background-color: #000000;
+		}
+	</style>
+	<!--//////////////////////////////-->
+	<style type="text/css">
+		#scroll {
+			position: fixed;
+			bottom: 45px;
+			right: 50%;
+			z-index: 998;
+		}
+		
+		.scrollItem {
+			width: 20px;
+			height: 70px;
+			border: #e1e1e1 0px;
+			cursor: pointer;
+			text-align: center;
+			padding-top: 10px;
+		}
+		/*guangao*/
+		
+		body {
+			background-color: #FFF;
+		}
+		
+		img {
+			border-width: 0;
+		}
+		
+		img#arrow,
+		img#arrowImg {
+			width: 147px;
+			height: 82px;
+		}
+		
+		#button1,
+		#button2 {
+			width: 113px;
+			height: 33px;
+		}
+		
+		.centered {
+			text-align: center;
+		}
+		
+		#adBanner {
+			width: 100%;
+			height: 120px;
+		}
+	</style>
+</head>
+<header class="mui-bar mui-bar-nav" style="background-color: lightblue;">
+	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">动态</a>
+	<h1 class="mui-title">旅途</h1>
+</header>
+<div class="mui-content">
+	<!--//////////////////////////////////////-->
+	<div class="mui-dome">
+		<h1 class="news_title" id="news_tit"></h1>
+		<p class="user_txt">
+			<img src="img/3.jpg" alt="" id="news_img" class="user_img" />
+			<span class="user_name" id="news_name">Com缔造者</span>
+			<span class="news_time" id="news_time">2018-12-01</span>
+		</p>
+	</div>
+	<!--以上无关，只为示例-->
+
+	<!-- 视频播放区域-->
+	<div class="mui-video-Container" id="video_Container">
+		<div class="mui-video-full">
+			<!--加载提示-->
+			<div class="rprogress">
+				<span class="ladtit">加载</span>
+				<div class="rschedule"></div>
+			</div>
+			<!--end-->
+			<!--全屏时后退图标-->
+			<span class="mui-full-back"> 
+   <svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-houtui1"></use>
+   </svg>
+    <span class="vtitle"></span>
+			</span>
+			<!--end-->
+			<!--播放按钮-->
+			<span class="mui-pay_ico"> 
+   <svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-bofang1"></use>
+   </svg>
+  </span>
+			<!--end-->
+			<div class="v_left"></div>
+			<div class="b_right"></div>
+			<div class="ptime"></div>
+			<div class="mui-video-txt"></div>
+			<!-- 播放进度条-->
+			<div class="mui-videoControls">
+				<span class="mui-time-total mui-quanping"> <!--全屏按钮-->
+			  <span class="mui-time-cout">00:00</span>
+				<!--总时间-->
+				<span class="mui-full-btu">
+			 <svg class="icon" aria-hidden="true">
+       <use xlink:href="#icon-quanping"></use>
+       </svg>
+			 </span>
+				</span>
+				<span class="mui-time-current">00:00</span>
+				<!--进度时间-->
+				<div class="mui-progressWrap">
+					<!--可以拖动的进度条-->
+					<div class="mui-wrap-right">
+						<input type="range" id='mui-block-range' value="0" min="0" max="100">
+					</div>
+				</div>
+			</div>
+			<!-- 播放进度条end-->
+		</div>
+
+	</div>
+
+	<!--视频播放区域end-->
+
+	<!--以下无关，只为示例-->
+	<p class="text_dome">
+		<b>剧情简介 :</b><br />
+		<!--为了给最疼爱的小老弟菜鸟（克里斯多夫·奈茨 Christopher Knights 配音）庆生，老大（汤姆·麦格拉思 Tom McGrath 配音）带领菜鸟以及好搭档科斯基（克里斯·米勒 Chris Miller 配音）、瑞哥闯入了防守最严密的美国黄金储备中心，只为找到金库尽头仅有的那台销售炸薯条的自动贩卖机。-->
+		谁知他们刚刚完成任务没多久
+		<!--，便被长着触角的贩卖机吞了进去，随后被运到一个神秘的所在。-->
+		<br />
+	</p>
+	<hr />
+	<!--////////////////////////////////////-->
+	<div style="height: 40px; margin-top: 5px;">
+		<span>热门推荐</span>
+		<span style="margin-left: 220px;">更多</span>
+	</div>
+	<div class="mui-slider">
+		<div class="mui-slider-group" style="margin-left: 10px;height: 200px;">
+			<!--第一个内容区容器-->
+			<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 5px;text-align: center;">
+				<!-- 具体内容 -->
+				<img src="../../img/20.jpg" style="border-radius:10px;" />
+				<span>哈哈</span>
+			</div>
+
+			<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 10px;">
+				<!-- 具体内容 -->
+				<img src="../../img/21.jpg" style="border-radius:10px;margin-right: 10px;" />
+			</div>
+
+			<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 10px;">
+				<!-- 具体内容 -->
+				<img src="../../img/22.jpg" style="border-radius:10px;margin-right: 10px;" />
+			</div>
+
+			<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 10px;">
+				<!-- 具体内容 -->
+				<img src="../../img/23.jpg" style="border-radius:10px;" />
+			</div>
+			<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 10px;">
+				<!-- 具体内容 -->
+				<img src="../../img/24.jpg" style="border-radius:10px;" />
+			</div>
+			<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 10px;">
+				<!-- 具体内容 -->
+				<img src="../../img/26.jpg" style="border-radius:10px;" />
+			</div>
+
+		</div>
+	</div>
+
+	<!--/////////////////////////////////////////////////-->
+
+	<div class="centered" style="margin-bottom:;">
+		<a href="#"><img src="../../img/07.JPEG" id="adBanner" alt="ad Banner" /></a>
+	</div>
+</div><br />
+<!--//////////////////////////////////////////////////////////////-->
+<div style="height: 7px;background-color:lightblue;"></div>
+<div style="height: 60px;background-color: white;text-align: center;line-height: 60px;color: green;">一路风光<span class="mui-icon mui-icon-arrowright"></span></div>
+<!--///////////////////////////////////////////-->
+<div class="mui-slider">
+	<div class="mui-slider-group" style="margin-left: 10px;height: 300px;">
+		<!--第一个内容区容器-->
+		<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 15px;text-align: center;">
+			<!-- 具体内容 -->
+			<img src="../../img/13.jpg" style="border-radius:10px;" />
+			<span>哈哈</span>
+		</div>
+
+		<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 15px;text-align: center;">
+			<!-- 具体内容 -->
+			<img src="../../img/14.jpg" style="border-radius:10px;" />
+			<span>哈哈</span>
+		</div>
+
+		<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 15px;text-align: center;">
+			<!-- 具体内容 -->
+			<img src="../../img/15.jpg" style="border-radius:10px;" />
+			<span>哈哈</span>
+		</div>
+		<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 10px;text-align: center;">
+			<!-- 具体内容 -->
+			<img src="../../img/16.jpg" style="border-radius:10px;" />
+			<span>哈哈</span>
+		</div>
+
+	</div>
+</div>
+<!--///////////////////////////-->
+<div id="scroll">
+	<div class="scrollItem" id="toTop">
+		<img src="../../images/Luxiang.png"  onclick="getVideo()"/></div>
+
+</div>
+<!--////////////////录屏////////////////-->
+<script type="text/javascript" src="../../Script/doc.js" ></script>
+<script type="text/javascript" src="../../Script/prettify.js" ></script>
+<script type="text/javascript" src="../../Script/common.js" ></script>
+		<script type="text/javascript">
+var i=1,gentry=null,w=null;
+var hl=null,le=null,de=null,ie=null;
+var unv=true;
+var bUpdated=false; //用于兼容可能提前注入导致DOM未解析完更新的问题
+// H5 plus事件处理
+function plusReady(){
+	// 获取摄像头目录对象
+	plus.io.resolveLocalFileSystemURL('_doc/', function(entry){
+		entry.getDirectory('camera', {create:true}, function(dir){
+			gentry = dir;
+			updateHistory();
+		}, function(e){
+			outSet('Get directory "camera" failed: '+e.message);
+		} );
+	}, function(e){
+		outSet('Resolve "_doc/" failed: '+e.message);
+	});
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener('plusready', plusReady, false);
+}
+// 监听DOMContentLoaded事件
+document.addEventListener('DOMContentLoaded', function(){
+	// 获取DOM元素对象
+	hl=document.getElementById('history');
+	le=document.getElementById('empty');
+	de=document.getElementById('display');
+	if(ie=document.getElementById('index')){
+		ie.onchange=indexChanged;
+	}
+	// 判断是否支持video标签
+	unv=!document.createElement('video').canPlayType;
+	updateHistory();
+},false );
+function changeIndex(){
+	outSet('选择摄像头：');
+	ie.focus();
+}
+function indexChanged(){
+	de.innerText = ie.options[ie.selectedIndex].innerText;
+	i = parseInt(ie.value);
+	outLine(de.innerText);
+}
+// 拍照
+function getImage(){
+	/*outSet('开始拍照：');*/
+	var cmr = plus.camera.getCamera();
+	cmr.captureImage(function(p){
+		outLine('成功：'+p);
+		plus.io.resolveLocalFileSystemURL(p, function(entry){
+			createItem(entry);
+		}, function(e){
+			outLine('读取拍照文件错误：'+e.message);
+		});
+	}, function(e){
+		outLine('失败：'+e.message);
+	}, {filename:'_doc/camera/',index:1});
+}
+// 录像
+function getVideo(){
+	/*outSet('开始录像：');*/
+	var cmr = plus.camera.getCamera();
+	cmr.startVideoCapture(function(p){
+		outLine('成功：'+p);
+		plus.io.resolveLocalFileSystemURL(p, function(entry){
+			createItem(entry);
+		}, function(e){
+			outLine('读取录像文件错误：'+e.message);
+		} );
+	}, function(e){
+		outLine('失败：'+e.message);
+	}, {filename:'_doc/camera/',index:i});
+}
+// 显示文件
+function displayFile(li){
+	if(w){
+		outLine('重复点击！');
+		return;
+	}
+	if(!li || !li.entry){
+		ouSet('无效的媒体文件');
+		return;
+	}
+	var name = li.entry.name;
+	var suffix = name.substr(name.lastIndexOf('.'));
+	var url = '';
+	if(suffix=='.mov' || suffix=='.3gp' || suffix=='.mp4' || suffix=='.avi'){
+		//if(unv){plus.runtime.openFile('_doc/camera/'+name);return;}
+		url = '/plus/camera_video.html';
+	} else {
+		url = '/plus/camera_image.html';
+	}
+	w=plus.webview.create(url,url,{hardwareAccelerated:true,scrollIndicator:'none',scalable:true,bounce:'all'});
+	w.addEventListener('loaded', function(){
+		w.evalJS('loadMedia("'+li.entry.toLocalURL()+'")');
+		//w.evalJS('loadMedia("'+'http://localhost:13131/_doc/camera/'+name+'")');
+	}, false );
+	w.addEventListener('close', function(){
+		w = null;
+	}, false);
+	w.show('pop-in');
+}
+
+// 添加播放项
+function createItem(entry){
+	var li = document.createElement('li');
+	li.className = 'ditem';
+	li.innerHTML = '<span class="iplay"><font class="aname"></font><br/><font class="ainf"></font></span>';
+	li.setAttribute('onclick', 'displayFile(this)' );
+	hl.insertBefore( li, le.nextSibling );
+	li.querySelector('.aname').innerText = entry.name;
+	li.querySelector('.ainf').innerText = '...';
+	li.entry = entry;
+	updateInformation(li);
+	// 设置空项不可见
+	le.style.display = 'none';
+}
+// 获取录音文件信息
+function updateInformation(li){
+	if(!li || !li.entry){
+		return;
+	}
+	var entry = li.entry;
+	entry.getMetadata(function(metadata){
+		li.querySelector('.ainf').innerText = dateToStr(metadata.modificationTime);
+	}, function(e){
+		outLine('获取文件"'+entry.name+'"信息失败：'+e.message);
+	} );
+}
+// 获取录音历史列表
+function updateHistory(){
+	if(bUpdated||!gentry||!document.body){//兼容可能提前注入导致DOM未解析完更新的问题
+		return;
+	}
+  	var reader = gentry.createReader();
+  	reader.readEntries(function(entries){
+  		for(var i in entries){
+  			if(entries[i].isFile){
+  				createItem(entries[i]);
+  			}
+  		}
+  	}, function(e){
+  		outLine('读取录音列表失败：'+e.message);
+  	});
+  	bUpdated = true;
+}
+// 清除历史记录
+function cleanHistory(){
+	hl.innerHTML = '<li id="empty" class="ditem-empty">无历史记录</li>';
+	le = document.getElementById('empty');
+	// 删除音频文件
+	outSet('清空拍照录像历史记录：');
+	gentry.removeRecursively(function(){
+		// Success
+		outLine('成功！');
+	}, function(e){
+		outLine('失败：'+e.message);
+	});
+}
+		</script>
+	<link rel="stylesheet" href="../../css/common.css" />
+		<style type="text/css">
+.aname {
+	font-size: 16px;
+}
+.ainf {
+	font-size: 12px;
+}
+.iplay {
+	display: block;
+	background: no-repeat right center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABYCAYAAAADWlKCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAKwwAACsMBNCkkqwAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOS8xMi8xM5w+I3MAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAAD9UlEQVR4nO2b3XETMRRGDwzvoYOkg5hRAVkqiKmAdIA7wHSQVECoALsC1gXciV0BTge4gvCwgnHk9d/+WF8m97ztxrlXs8fS1Urym6enJxwd3uZugPMcFyKGCxHDhYjhQsRwIWK4EDFciBguRAwXIoYLEcOFiOFCxHAhYrgQMVyIGC5EDBcihgsRw4WI4ULEcCFiuBAx3uVuwDGY2XtgCBTAALjc8tEFMAdKYBJC+HOK9nXBm5dwUM7MCmAEXDcMMQVuQwhlV23qC2khZjYAboGrjkLOgFEIYd5RvM6RrSFmdgs80J0MYqyHGFsSuR4S60TJ9vrwCEziZ+YhhGXy/xdU9aWgqjfnW+IsgEKtvkgJiUPUPfUyZsD42DoQ68+Y+p62AG6UhjAZITt6xopq3L9vGf+Gqh6dJX+S6ilKNaRkU8YCGLSVARBjDGLMdS5jbgkkhMQiWyejSGtEG2KsghopKoU++5AV68ZDcrvXYWTH8Pghdz1R6CHpN3MFDPsc02PsYcy1qy0nJ6uQOANKZz+jfcOUmd3H6W1jYo5RcvsqtikbuXtI+kBmBxbwz8DczMZtksdcsz1tOinZhMRxPF2bGh8R4gz4amZLMxu2aEqa8zq2LQs5e0j6EB8bLv6dAz/NrGwyjMWcj3vadjJyCimS60nLeFfAbzO7bfANT3MXLdvSmJxCBsl12VHcL8AyvpkfSpo7bdvJyCkkfQfocv5/Bnw3s/mBs6Y097aFzd7JPcv6T5dv5GtcAr/2TZN7yt0IGSE908k0+RS8FiEvhhd1yKEFUw5YAVBApoe0XQrZwgL4GEIY7pLRU+5G5OwhC57PZgbAsqPYK6rdxUMXC9Npbro8fzJy9pB0qll0FPcOuDhCRl3ubEvwOYWUyXXb5YoZ1X7GqMHSfZq7bNmWxuQUki5XnDdc+n4EPoUQiiabSzFnejKl7TJOY7IJid/iaXJ7fESIFfCNas+9zQNMc05zHnjIPctKx/mrA9egflCJGLd5eDFXukGWdddQYU+95PlDWVE97GXPeS+oivf6saBZCKHoM+8+cvcQ2NyhOwMmfW4SxdgTNs9oZd0tBAEhsRDfJbcvgbIPKTtOnNzlPnECAkPWP8xsTv3ZrJ1v2UfmuKDqGRt5QgjZ9kDWyd5D1iioP1U4P3KzqZYYY5v0om38rpDpIeCHrUFMCPjPEeSE/COetf3SU/i7EEL2GVUdSjXkGfGBfWDzIFsb/q93dRizU2R7yDr+o09R/GfRzsmRrSGvFRcihgsRw4WI4ULEcCFiuBAxXIgYLkQMFyKGCxHDhYjhQsRwIWK4EDFciBguRAwXIoYLEcOFiOFCxHAhYrgQMf4CVuqCm+17t3sAAAAASUVORK5CYII=);
+	background-size: 50px 44px;
+	-ms-touch-action: auto;
+}
+		</style>
+	
+		<div id="dcontent" class="dcontent">
+			
+			
+			<br/>
+			<!-- History list -->
+			<!--<ul id="history" class="dlist" style="text-align:left;">
+				<li id="empty" class="ditem-empty">无历史记录</li>
+			</ul>
+			<br/>
+			<div class="button button-waring" onclick="cleanHistory()">清空历史记录</div>
+			<br/>
+		</div>-->
+		<!--<div id="output">
+Camera管理摄像头设备，可用于拍摄照片、录制视频文件。
+		</div>
+-->
+	
+	<script type="text/javascript" src="../../js/immersed.js" ></script>
+<!--////////////////////////主容器之外///////////////////////////////-->
+<div id="openvideo">切换视频播放</div>
+
+<script src="js/html5video.js"></script>
+<!--//视频JS-->
+<script src="js/hls.min.js"></script>
+<!--//如果需要播放m3u8格式需要引入这个JS解码,不需要可以去掉-->
+<script type="text/javascript" charset="utf-8">
+	mui.init();
+	//初始化插件
+	var htmlvideo = Html5video("#video_Container", {
+		title: "新坦结衣Gakki雪肌精广告", //视频标题，当全屏时会显示
+		url: "X.mp4", //支持本地视频和网络视频，格式MP4
+		img: "", //视频截图封面
+		time: "03:42", //视频总时间以分钟单位，当网络缓慢时，没办法及时加载出来，如已知可以填写，可不填。
+		autoplay: false, //是否自动播放视频
+		isMobile: false, //是否开启当处于移动网络时，提示用户是否继续播放视频。,不支持浏览器环境
+		isFull: true, //是否点击播放就全屏显示
+		iospay: false, //如果是IOS系统是否采用苹果系统自带播放器, 可以在浏览器或微信中，全屏观看视频
+		drag: true, //禁止拖动,调节,音量和亮度
+		isfull: true, //是否显示全屏按钮
+		prompt: function(video) //当开启isMobile时,这里可以写提示用户的内容,h5+环境才有效
+		{
+			mui.confirm('你当前处于移动手机网络将会消耗手机流量，是否继续播放？', '提示', ["取消", "确定"], function(e) {
+				if(e.index == 1) {
+					video.play();
+				}
+			}, "div");
+		}
+	});
+
+	mui("body").on("tap", "#openvideo", function() {
+		//切换视频播放
+		htmlvideo.getplayUrl({
+			url: "http://onehk-1251146759.cosgz.myqcloud.com/video_171129.mp4",
+			img: "https://zs.manyiwl.com/uploads/image/20171231/1514657764.jpg",
+			title: "悦诗风吟绿色圣诞向珍贵的人传递心意"
+		});
+	});
+</script>
+
+<body>

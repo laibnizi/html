@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="../css/mui.min.css" />
+		<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui("body").on("tap", "a", function() {
+				window.top.location.href = this.href;
+			});
+		</script>
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar .mui-pull-left .mui-icon {
+				padding-right: 5px;
+				font-size: 28px;
+			}
+			
+			.mui-bar .mui-btn {
+				font-weight: normal;
+				font-size: 17px;
+			}
+			
+			.mui-bar .mui-btn-link {
+				top: 1px;
+			}
+			
+			.mui-content img {
+				width: 100%;
+			}
+			
+			.hm-description {
+				margin: 15px;
+			}
+			
+			.hm-description>li {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript">
+			mui.init()
+			$(function() {
+				mui(".mui-slider").slider({
+					interval: 2000
+				});
+			});
+		</script>
+		<header id="header" class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="meishi.html"></a>
+			<h1 class="mui-title" style="color:green;">大董烤鸭工体店</h1>
+		</header>
+
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="imgs/1.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/1.jpg">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/2.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/3.jpg">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/4.jpg">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="imgs/1.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+
+			<script src="../js/mui.min.js"></script>
+			<script type="text/javascript">
+				mui.init({
+					swipeBack: true //启用右滑关闭功能
+				});
+				var slider = document.getElementById("slider");
+				mui('.mui-input-group').on('change', 'input', function() {
+					if(this.checked) {
+						switch(this.value) {
+							case 'static':
+								document.getElementById("img1").className = "";
+								document.getElementById("slider").classList.add("mui-hidden");
+								break;
+							case 'slider':
+								document.getElementById("img1").className = "mui-hidden";
+								if(slider.classList.contains("mui-hidden")) {
+									document.getElementById("slider").classList.remove("mui-hidden");
+								}
+								break;
+						}
+					}
+				});
+			</script>
+			<ul class="mui-table-view">
+
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+
+						<span style=" font-size: 16px;" class="mui-icon mui-icon-location">北京市朝阳区工人体育馆东门北侧</span>
+					</a>
+				</li>
+
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+
+						<span style=" font-size: 16px;" class="mui-icon mui-icon-star">11:00-22:00</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+
+						<span style=" font-size: 16px;" class="mui-icon mui-icon-arrowdown">更多价格，路线详细信息</span>
+					</a>
+				</li>
+
+			</ul>
+			<div class="mui-card">
+				<div class="mui-card-header"><h3>美食介绍</h3></div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<h4>餐厅介绍</h4>     
+						<p>大董烤鸭是北京非常火爆的创意餐厅，酥不腻烤鸭是最大的招牌，鸭皮口感独特，酥酥的鸭皮蘸了白糖，放在舌尖不嚼即化，深受欢迎。除了烤鸭外，店里各季节都会有创意菜肴。 </p>
+					<h4>本店特色美食</h4>	  
+				<p>糖醋小排 , 芥末鸭掌 , 鸭汤 , 葱烧海参 , 盐水鸭肝 , 宫保虾球 , 老北京炸酱面 , 火燎鸭心 , 雀巢鸭宝 , 椰汁汤圆 , 香椿豆腐 , 樱桃鹅肝 , 栗子白菜 , 奇妙虾球 , 鲜榨石榴汁 , 酥不腻烤鸭 , 干烧鸭四宝 , 番茄脆菇沙拉 , 海米白菜 , 龙虾汤伊面 , 桂花藕鹅肝 , 董氏烧海参 , 烤鸭配料 , 用餐后送的糖葫芦 , 董事烧茄子 , 伊比利亚火腿粽子 , 红花汁花胶 , 四月冲菜牛肉 , 生蚝双味 , 抹茶桃花 , 红花汁鱼肚 , 憋辣菜之本味 , 花椒芽海参肠 , 花雕荠菜馄饨。</p>	
+					</div>
+				</div>
+			</div>
+
+	</body>
+
+</html>

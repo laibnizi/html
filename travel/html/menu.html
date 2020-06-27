@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../js/util.js" ></script>
+		<script type="text/javascript" src="../js/main.js" ></script>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<style type="text/css">
+			body {
+				position: relative;
+				z-index: 1800;
+			}
+		</style>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				swipeBack: true
+			});
+			//轮播图代码
+			$(function() {
+				mui(".mui-slider").slider({
+					interval: 1500
+				});
+
+			});
+			
+				
+		</script>
+
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar .mui-pull-left .mui-icon {
+				padding-right: 5px;
+				font-size: 28px;
+			}
+			
+			.mui-bar .mui-btn {
+				font-weight: normal;
+				font-size: 17px;
+			}
+			
+			.mui-bar .mui-btn-link {
+				top: 1px;
+			}
+			
+			.mui-content img {
+				width: 100%;
+			}
+			
+			.hm-description {
+				margin: 15px;
+			}
+			
+			.hm-description>li {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			
+			.flex-container {
+				display: -webkit-flex;
+				display: flex;
+				-webkit-justify-content: space-around;
+				justify-content: space-around;
+				width: 100%;
+				height: 100px;
+				/*background-color: lightgrey;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<header id="header" class="mui-bar mui-bar-transparent">
+
+			<h1 class="mui-title" style="color: white;">左滑返回主页</h1>
+			<img src="../images/Left.png" style="margin-left: 300px;" />
+		</header>
+
+		<div class="mui-content">
+			<!--静态图片-->
+			<div style="height: 20px;">
+				<img id="img1" src="../img/01.jpg" / style="height: 250px;">
+				
+			</div>
+			<!--<div>ISO端返回就</div>-->
+		</div>
+
+		<div class="mui-content">
+			<div style="width: 240px; height: 60px;">
+				<a class="mui-tab-item" id="LuChi">
+					<span class="mui-icon mui-icon-navigate" style="margin-top: 10px; font-size: 40px; color: white;"></span>
+					<span class="mui-tab-label" style="font-size: 25px;color: white;">路痴</span>
+				</a>
+			</div>
+			<div class="flex-container">
+				<div style=" width:80px;height: 80px;">
+					<img src="../img/44.jpg" id="UserHeadImg" style="width:80px;height: 80px;border-radius: 50%;" />
+				</div>
+				<div id="UserName" style="height: 80px;width: 80px;">
+					<span style="text-align: center;line-height: 80px;color: white;font-size: 20px;"><b>用户名</b></span>
+				</div>
+			</div>
+			 <div id="Logoin" style="height: 60px;background-color: white;text-align: center;line-height: 60px;color:;font-size: 30px;color: white;"><b>登录</b><span class="mui-icon mui-icon-arrowright"></span></div>
+	</div>
+	<div style="height: 15px;background-color:lightblue;margin-top: -5px;"></div>
+	<!--////////////////////////////////-->
+	<ul class="mui-table-view mui-grid-view ">
+	<li class="mui-table-view-cell mui-media mui-col-xs-3 ">
+	    <a href="">
+	        <span class="mui-icon mui-icon-image"></span>
+	        <div class="mui-media-body">相册</div>
+	    </a>
+	</li>
+	
+	<li class="mui-table-view-cell mui-media mui-col-xs-3 ">
+	    <a href="#">
+	        <span class="mui-icon mui-icon-flag"></span>
+	        <div class="mui-media-body">旗帜</div>
+	    </a>
+	</li>
+	<li class="mui-table-view-cell mui-media mui-col-xs-3 ">
+	    <a href="#">
+	        <span class="mui-icon mui-icon-chatbubble"></span>
+	        <div class="mui-media-body">Chat</div>
+	    </a>
+	</li>
+	<li class="mui-table-view-cell mui-media mui-col-xs-3 ">
+	    <a href="" id="MenuShare">
+	        <span class="mui-icon mui-icon-spinner"></span>
+	        <div class="mui-media-body">分享</div>
+	    </a>
+	</li>
+	</ul>
+	<hr /><br />
+	    
+	    <style type="text/css">
+	    #popover{
+	    	height: 100px;
+	    	width:200px;
+	    }
+	    </style>
+	    <div id="popover" class="mui-popover" style="background: rgba(51, 153, 238, .2);">
+	    	<div class="mui-scroll-wrapper" style="background: rgba(51, 153, 238, .2);">
+	    	    <div class="mui-scroll" style="background: rgba(51, 153, 238, .2);">
+	    		    <ul class="mui-table-view" style="text-align: center;rgba(51, 153, 238, .2);">
+	    		  	<li class="mui-table-view-cell" ><a href="#" id="upload"><span class="mui-icon mui-icon-upload"></span>  上传</a></li>
+	    		 <div id="seachTelephone" > 	<a href="#" ><span class="mui-icon mui-icon-spinner-cycle"></span>手机归属地</a></div>
+	    		    	
+	    		    </ul>
+	    		</div>
+	    	</div>
+	    </div>
+	    <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block" style="margin-left:160px;height: 60px;width: 60px;border-radius:50% ;">工具</a>
+	  <!--  mui('.mui-scroll-wrapper').scroll()-->
+	  
+	</body>
+	<script type="text/javascript">
+			mui("body").on("tap","#Logoin",function(){
+				 mui.openWindow({
+				 	id:'Logoin',
+				 	url:'Logoin/index.html'
+				 });
+			});
+			
+			mui("body").on("tap","#LuChi",function(){
+				 mui.openWindow({
+				 	id:'LuChi',
+				 	url:'LuChi.html'
+				 });
+			});
+			mui("body").on("tap","#MenuShare",function(){
+				 mui.openWindow({
+				 	id:'MenuShare',
+				 	url:'MenuSharesub.html'
+				 });
+			});
+			mui("body").on("tap","#upload",function(){
+				 mui.openWindow({
+				 	id:'upload',
+				 	url:'uploader.html'
+				 });
+			});
+			mui("body").on("tap","#seachTelephone",function(){
+				 mui.openWindow({
+				 	id:'seachTelephone',
+				 	url:'searchtelephone.html'
+				 });
+			});
+		</script>
+</html>

@@ -1,0 +1,421 @@
+<!doctype html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>期待你发现我的爱</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.js"></script>
+<!--		<script type="text/javascript" src="js/jquery.gradientify.min.js"></script>-->
+		<!--<script>
+			$(document).ready(function() {
+				$("button").gradientify({
+					gradients: [{
+							start: [49, 76, 172],
+							stop: [242, 159, 191]
+						},
+						{
+							start: [255, 103, 69],
+							stop: [240, 154, 241]
+						},
+						{
+							start: [33, 229, 241],
+							stop: [235, 236, 117]
+						}
+					]
+				});
+			});
+		</script>-->
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<style type="text/css">
+			body {
+				font-family: "Microsoft YaHei", sans-serif;
+				color: #333;
+				background-color: ;
+			}
+			
+			div.mui-content {
+				background-color: cadetblue;
+			}
+			
+			p {
+				margin-bottom: 0px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				padding: 5px 10px;
+				/*border-style: none;*/
+				background: darkgrey;
+				color: white;
+				font-size: 20px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper {
+				height: 48px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+				width: 100px;
+				border: 0px;
+				box-shadow: 0 0 5px #aaa;
+				line-height: 30px;
+				border-radius: 50%;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item.mui-active {
+				color: #fff;
+				background-color: magenta;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 45px;
+			}
+			
+			.mui-slider-group .mui-scroll-wrapper {
+				padding-top: 5px;
+			}
+			
+			.mui-slider-group {
+				margin-top: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+
+					<div class="mui-scroll">
+
+						<a class="mui-control-item mui-active" data-index="0">境外</a>
+						<a class="mui-control-item" data-index="1">美好</a>
+						<a class="mui-control-item" data-index="2">视界</a>
+						<a class="mui-control-item" data-index="3">奇山</a>
+						<a class="mui-control-item" data-index="4">异水</a>
+						<a class="mui-control-item" data-index="5">其他</a>
+					</div>
+
+				</div>
+				<!--//////////////////////////////////////////////////////////////-->
+				<style type="text/css">
+					#btn {
+						width: 0px;
+						height: 36px;
+						border: none;
+						background-color: #069;
+						color: #fff;
+						font-size: 14px;
+						font-family: Microsoft YaHei;
+						cursor: pointer;
+					}
+				</style>
+				<button class="sosocity" type="button" style="height: 30px;left: 70px;margin-top: 6px;width: 65%;border-radius: 16px;border-style: none;position: absolute;background: rgba(205, 225, 225, .8);">
+		   	  <span class="placeholder " style="margin-top: -10px;float: right;"><span class="mui-icon mui-icon-search"></span><span class="text">搜索</span></span>
+		   </button>
+				<!--<input type="search" class="mui-icon mui-icon-search" style="width: 88%;margin-top: 10px;" />
+				<button  style="height: 30px;" id="btn"></button>
+				<script type="text/javascript">
+					
+					(function($) {
+						$.extend({
+							tipsBox: function(options) {
+								options = $.extend({
+									obj: null, //jq对象，要在那个html标签上显示
+									str: "+1", //字符串，要显示的内容;也可以传一段html，如: "<b style='font-family:Microsoft YaHei;'>+1</b>"
+									startSize: "12px", //动画开始的文字大小
+									endSize: "30px", //动画结束的文字大小
+									interval: 600, //动画时间间隔
+									color: "red", //文字颜色
+									callback: function() {} //回调函数
+								}, options);
+								$("body").append("<span class='num'>" + options.str + "</span>");
+								var box = $(".num");
+								var left = options.obj.offset().left + options.obj.width() / 2;
+								var top = options.obj.offset().top - options.obj.height();
+								box.css({
+									"position": "absolute",
+									"left": left + "px",
+									"top": top + "px",
+									"z-index": 9999,
+									"font-size": options.startSize,
+									"line-height": options.endSize,
+									"color": options.color
+								});
+								box.animate({
+									"font-size": options.endSize,
+									"opacity": "0",
+									"top": top - parseInt(options.endSize) + "px"
+								}, options.interval, function() {
+									box.remove();
+									options.callback();
+								});
+							}
+						});
+					})(jQuery);
+				</script>-->
+				<script type="text/javascript">
+					///点赞计数
+					$(function() {
+						$("#btn").click(function() {
+							$.tipsBox({
+								obj: $(this),
+								str: "+666",
+								callback: function() {
+									//alert(5);
+								}
+							});
+						});
+					});
+				</script>
+
+				<!--/////////////////////////////////////////////////-->
+				<div class="mui-slider-group">
+					<div class="mui-slider-item mui-control-content mui-active">
+
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+
+								<div class="mui-card">
+
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											欧洲名字源于希腊神话人物“欧罗巴”。欧洲面积1016万平方公里，是世界第六大洲，约有7.28亿人（2005年数据），约占世界总人口的11%。
+										</div>
+									</div>
+									<div class="mui-card-footer">欧洲游</div>
+								</div>
+								<div class="mui-card">
+									<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../../img/024.jpg)"></div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<p>西班牙</p>
+											<p style="color: #333;">充满浪漫气息的国家，也是足球强国 </p>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<a class="mui-card-link">价格</a>
+										<a class="mui-card-link">跟团</a>
+										<a class="mui-card-link">行程</a>
+									</div>
+								</div>
+								<div class="mui-card">
+									<div class="mui-card-header mui-card-media">
+			
+									</div>
+								</div>
+
+								<div class="mui-card">
+									<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../../img/025.jpg)"></div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<p>意大利</p>
+											<p style="color: #333;">福罗伦萨小镇的曼妙风光</p>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<a class="mui-card-link">价格</a>
+										<a class="mui-card-link">跟团</a>
+										<a class="mui-card-link">行程</a>
+									</div>
+								</div>
+
+								<div class="mui-card">
+									<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../../img/026.jpg)"></div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<p>爱尔兰</p>
+											<p style="color: #333;">热情好客的爱尔兰人民还有爱尔兰烤肉</p>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<a class="mui-card-link">价格</a>
+										<a class="mui-card-link">跟团</a>
+										<a class="mui-card-link">行程</a>
+									</div>
+								</div>
+								<!--/////////////////////////////////////////////-->
+							</div>
+						</div>
+					</div>
+					<!--//////////////////////////////////////////////////-->
+					<div class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+
+							<!--下拉刷新容器-->
+							<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<!--数据列表-->
+									<ul class="mui-table-view mui-table-view-chevron">
+										<ul class="mui-table-view mui-grid-view">
+											<li class="mui-table-view-cell mui-media mui-col-xs-4">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/01.jpg">
+													<div class="mui-media-body">天坛</div>
+												</a>
+											</li>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/028.jpg">
+													<div class="mui-media-body">长城</div>
+												</a>
+											</li>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/027.jpg">
+													<div class="mui-media-body">故宫</div>
+												</a>
+											</li>
+										</ul>
+										<div class="mui-card">
+											<div class="mui-card-header mui-card-media">
+												<img src="../../img/034.jpg" style="width:34px">
+												<div class="mui-media-body">
+													<p>拉丁美洲十日游跟团特价</p>
+												</div>
+											</div>
+										</div>
+										<ul class="mui-table-view mui-grid-view">
+											<li class="mui-table-view-cell mui-media mui-col-xs-6">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/032.jpg">
+													<div class="mui-media-body">智利</div>
+												</a>
+											</li>
+											<li class="mui-table-view-cell mui-media mui-col-xs-6">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/034.jpg">
+													<div class="mui-media-body">秘鲁</div>
+												</a>
+											</li>
+										</ul>
+										<div class="mui-card">
+											<div class="mui-card-header mui-card-media">
+												<img src="../../img/030.jpg" style="width:34px">
+												<div class="mui-media-body">
+													<p>拉丁美洲十日游跟团特价</p>
+												</div>
+											</div>
+										</div>
+										<ul class="mui-table-view mui-grid-view">
+											<li class="mui-table-view-cell mui-media mui-col-xs-4">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/029.jpg">
+													<div class="mui-media-body">委内瑞拉</div>
+												</a>
+											</li>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/030.jpg">
+													<div class="mui-media-body">巴西</div>
+												</a>
+											</li>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4">
+												<a href="#">
+													<img class="mui-media-object" src="../../img/032.jpg">
+													<div class="mui-media-body">阿根廷</div>
+												</a>
+											</li>
+										</ul>
+										<!--//////////////////////////////////-->
+									</ul>
+								</div>
+							</div>
+
+							<!--//////////////////////////////////////-->
+
+						</div>
+					</div>
+					<!--//////////////////////////////////////-->
+					<link rel="stylesheet" href="video-js.css" />
+					<script type="text/javascript" src="video.js"></script>
+					<link rel="stylesheet" href="../Video5/VideoDemo.css" />
+					<div class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+
+								<div class="mui-card">
+									<div class="mui-card-content">
+										<video id="my_video_1" class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="170px" controls preload="none" poster='http://video-js.zencoder.com/oceans-clip.jpg' data-setup='{  }'>
+											<source src="shipin.mp4" type='video/mp4' />
+										</video>
+									</div>
+									<div class="mui-card-footer">欧洲三日游</div>
+								</div>
+								<div class="mui-card">
+									<div class="mui-card-content">
+										<video id="my_video_1" class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="170px" controls preload="none" poster='http://video-js.zencoder.com/oceans-clip.jpg' data-setup='{  }'>
+											<source src="Tianjin.mp4" type='video/mp4' />
+										</video>
+									</div>
+									<div class="mui-card-footer">天津就地游</div>
+								</div>
+								<div class="mui-card">
+									<div class="mui-card-content">
+										<video id="my_video_1" class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="170px" controls preload="none" poster='http://video-js.zencoder.com/oceans-clip.jpg' data-setup='{  }'>
+											<source src="Shijiaz.mp4" type='video/mp4' />
+										</video>
+									</div>
+									<div class="mui-card-footer">石家庄徒步游游</div>
+								</div>
+								<div class="mui-card">
+									<div class="mui-card-content">
+										<video id="my_video_1" class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="170px" controls preload="none" poster='http://video-js.zencoder.com/oceans-clip.jpg' data-setup='{  }'>
+											<source src="PPDao.mp4" type='video/mp4' />
+										</video>
+									</div>
+									<div class="mui-card-footer">海南一日游</div>
+								</div>
+								<!--/////////////////////////////////////////////////////-->
+
+								<!--////////////////////////////////////////////////////////////////////////-->
+
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								此处工作人员正努力完善
+
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								此处工作人员正努力完善
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								此处工作人员正努力完善
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			mui.ready(function() {
+				mui('.mui-scroll-wrapper').scroll({
+					bounce: true,
+					indicators: true,
+					deceleration: mui.os.ios ? 0.003 : 0.0009
+				});
+				mui('.mui-scroll').on('tap', '.mui-control-item:not(.mui-active)', function() {
+					mui('.mui-slider').slider().gotoItem(this.getAttribute('data-index'));
+				});
+			});
+		</script>
+	</body>
+
+</html>

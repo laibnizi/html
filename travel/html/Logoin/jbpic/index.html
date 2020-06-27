@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery悬停图片变色放大特效 - 站长素材</title>
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+<style type="text/css">
+body { background: #000; }
+.img { float: left; width: 200px; height: 200px; overflow: hidden; margin: 0 1px 1px 0; }
+.img .inner { position: absolute; }
+.img .inner div { position: absolute; top: 0; left: 0; width: 200px; height: 200px; }
+.img .inner img { width: 100%; height: 100%; }
+.img .inner div:last-child { opacity: 0; }
+</style>
+
+</head>
+<body>
+
+<div style="width:620px;margin:40px auto 0 auto;">
+
+	<div class="img">
+		<div class="inner">
+			<div><img src="image/1-1.jpg" /></div>
+			<div><img src="image/1-2.jpg" /></div>
+		</div>
+	</div>
+	<div class="img">
+		<div class="inner">
+			<div><img src="image/2-1.jpg" /></div>
+			<div><img src="image/2-2.jpg" /></div>
+		</div>
+	</div>
+	<div class="img">
+		<div class="inner">
+			<div><img src="image/3-1.jpg" /></div>
+			<div><img src="image/3-2.jpg" /></div>
+		</div>
+	</div>
+	<div class="img">
+		<div class="inner">
+			<div><img src="image/4-1.jpg" /></div>
+			<div><img src="image/4-2.jpg" /></div>
+		</div>
+	</div>
+	<div class="img">
+		<div class="inner">
+			<div><img src="image/1-1.jpg" /></div>
+			<div><img src="image/1-2.jpg" /></div>
+		</div>
+	</div>
+	<div class="img">
+		<div class="inner">
+			<div><img src="image/2-1.jpg" /></div>
+			<div><img src="image/2-2.jpg" /></div>
+		</div>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+$(".img").mouseenter(function () {
+	var $this = $(this);
+	var $div = $this.find(".inner div");
+	$div.eq(1).stop();
+	$div.eq(1).css({ "top": "0px", "left": "0px", "width": "200px", "height": "200px" });
+	$div.eq(0).stop().animate({ "top": "-25px", "left": "-25px", "width": "250px", "height": "250px", "opacity": "0" }, 500);
+	$div.eq(1).stop().animate({ "top": "-25px", "left": "-25px", "width": "250px", "height": "250px", "opacity": "1" }, 500);
+}).mouseleave(function () {
+	var $this = $(this);
+	var $div = $this.find(".inner div");
+	$div.eq(0).stop().animate({ "top": "0", "left": "0", "width": "200px", "height": "200px", "opacity": "1" }, 500);
+	$div.eq(1).stop().animate({ "top": "0", "left": "0", "width": "200px", "height": "200px", "opacity": "0" }, 500);
+});	
+</script>
+
+<div style="text-align:center;font:normal 14px/24px 'MicroSoft YaHei';clear:both;color:#ffffff;">
+<br>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui("body").on("tap", "a", function() {
+				window.top.location.href = this.href;
+			});
+		</script>
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar .mui-pull-left .mui-icon {
+				padding-right: 5px;
+				font-size: 28px;
+			}
+			
+			.mui-bar .mui-btn {
+				font-weight: normal;
+				font-size: 17px;
+			}
+			
+			.mui-bar .mui-btn-link {
+				top: 1px;
+			}
+			
+			.mui-content img {
+				width: 100%;
+			}
+			
+			.hm-description {
+				margin: 15px;
+			}
+			
+			.hm-description>li {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+		
+		<script type="text/javascript">
+			mui.init()
+			$(function() {
+				mui(".mui-slider").slider({
+					interval: 2000
+				});
+			});
+		</script>
+		<header id="header" class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="index.html"></a>
+			<h1 class="mui-title">故宮</h1>
+		</header>
+
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="imgs/5.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/5.jpg">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/6.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/7.jpg">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="imgs/8.jpg">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="imgs/5.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+
+			<script type="text/javascript" src="../js/mui.min.js" ></script>
+			<script type="text/javascript">
+				mui.init({
+					swipeBack: true //启用右滑关闭功能
+				});
+				var slider = document.getElementById("slider");
+				mui('.mui-input-group').on('change', 'input', function() {
+					if(this.checked) {
+						switch(this.value) {
+							case 'static':
+								document.getElementById("img1").className = "";
+								document.getElementById("slider").classList.add("mui-hidden");
+								break;
+							case 'slider':
+								document.getElementById("img1").className = "mui-hidden";
+								if(slider.classList.contains("mui-hidden")) {
+									document.getElementById("slider").classList.remove("mui-hidden");
+								}
+								break;
+						}
+					}
+				});
+			</script>
+			<ul class="mui-table-view">
+
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+
+						<span style=" font-size: 16px;" class="mui-icon mui-icon-location">北京市东城区景山前街4号</span>
+					</a>
+				</li>
+
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+
+						<span style=" font-size: 16px;" class="mui-icon mui-icon-star">旺季8:30-17:00；淡季8:30-16:30</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+
+						<span style=" font-size: 16px;" class="mui-icon mui-icon-arrowdown">点击查看线路及详细信息</span>
+					</a>
+				</li>
+
+			</ul>
+			<div class="mui-card">
+				<div class="mui-card-header">
+					<h3>景点介绍</h3></div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<h4>景点介绍</h4>
+						<p>
+
+							绝大多数第一次来北京的游客，都会把故宫当作必去之处。故宫又称紫禁城，是明、清两代的皇宫，也是古老中国的标志和象征。虽说这里早已不再是中国的政治中心，但当你置身于气派规整的高墙深院，依然能真真切切地感受到它曾经的荣耀。悠久的历史给这里留下了大规模的珍贵建筑和无数文物，也成为今天游玩故宫的主要看点。游览古建筑群故宫是中国乃至世界上保存非常完整、规模非常大的木质结构古建筑群，被誉为世界五大宫之首。这些金碧辉煌的建筑群可以分为“外朝”与“内廷”两大部分。以乾清门为界，乾清门以南为外朝，是皇帝处理政务的地方，以北为内廷，住着后宫嫔妃，是皇帝家庭生活之所。走过金銮殿、乾清宫、坤宁宫，在皇帝的御花园里赏弄花花草草，感觉好像穿越到了古装剧里。欣赏大量的珍贵文物故宫内珍藏有大量珍贵文物，据统计有上百万件。以文物的种类不同，分为多个展馆。其中珍宝馆和钟表馆最为引人注目，钟表馆每天11点和14点有钟表演示，可以看到清王朝珍藏的各种造型奇特的珍奇机械钟表，一定令你眼界大开。游玩路线故宫占地面积宽广，共有大大小小的宫殿70多座，游览路线繁多。想要好好地逛一圈，需要安排一天。 </p>
+						<h4>特别提醒</h4>
+						<p>1. 购票指南：故宫门票全部在官网提前十天预售，现场已不设购票窗口，全部网络购票，实名制购票。 <br /> 2. 参观路线：故宫需由南到北参观，午门为唯一入口，出口为神武门和东华门。 <br /> 3. 导游服务：如果想深入了解故宫历史，可以租借语音讲解器或雇请讲解员。讲解器有20、40元两种，讲解员服务全程250元，中、西路150元，中路100元，若人数超过五人需加收10元/人。珍宝馆、钟表馆、书画馆等展馆内提供免费的汉语、英语讲解。 <br /> 4. 免费存包：故宫提供免费存包服务。寄存的包裹在午门和神武门之间传送（就是说：你可以在午门入口存包，在神武门出口取包）。存包处工作时间8:30-18:00。 <br /> 5. 周边景点：游览结束，从神武门出来后，对面即是景山公园。即可步行游览景山公园，或向西600米抵达北海公园。</p>
+					</div>
+				</div>
+			</div>
+
+	</body>
+
+</html>

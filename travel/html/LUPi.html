@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+
+		<style type="text/css">
+			#scroll {
+				position: fixed;
+				bottom: 45px;
+				right: 50%;
+				z-index: 998;
+			}
+			
+			.scrollItem {
+				width: 20px;
+				height: 70px;
+				border: #e1e1e1 0px;
+				cursor: pointer;
+				text-align: center;
+				padding-top: 10px;
+			}
+			/*guangao*/
+			
+			body {
+				background-color: #FFF;
+			}
+			
+			img {
+				border-width: 0;
+			}
+			
+			img#arrow,
+			img#arrowImg {
+				width: 147px;
+				height: 82px;
+			}
+			
+			#button1,
+			#button2 {
+				width: 113px;
+				height: 33px;
+			}
+			
+			.centered {
+				text-align: center;
+			}
+			
+			#adBanner {
+				width: 100%;
+				height: 120px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			window.onload = initBannerLink;
+			var theAd = 0;
+			var adURL = new Array("baidu.com", "kugou.com", "qinshimoon.com");
+			var adImages = new Array("../img/12.jpg", "../img/08.jpg", "../img/10.jpg");
+
+			function initBannerLink() {
+				if(document.getElementById("adBanner").parentNode.tagName == "A") {
+					document.getElementById("adBanner").parentNode.onclick = newLocation;
+				}
+				rotate()();
+			}
+
+			function newLocation() {
+				document.location.href = "http://www." + adURL[theAd];
+				return false;
+			}
+
+			function rotate() {
+				theAd++;
+				if(theAd == adImages.length) {
+					theAd = 0;
+				}
+				document.getElementById("adBanner").src = adImages[theAd];
+				setTimeout(rotate, 3 * 1000);
+			}
+		</script>
+		<header class="mui-bar mui-bar-nav" style="background-color: lightblue;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">动态</a>
+			<h1 class="mui-title">旅途</h1>
+		</header>
+		<div class="mui-content">
+			<!--下拉刷新容器-->
+			<!-- <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+		      <div class="mui-scroll">
+		        <!--数据列表-->
+			<!-- <ul class="mui-table-view mui-table-view-chevron">-->
+			<!--///////////////////////-->
+			<!--<div id="MyVide" style="height: 120px;background-color:lightgray;">
+		          	<span style="font-size: 20px;">我的精彩</span>srgfg 
+		          	 的地方官飞机速度快
+		          </div>-->
+			<div class="centered">
+				<a href="#"><img src="../img/07.JPEG" id="adBanner" alt="ad Banner" /></a>
+			</div>
+
+			<div style="height: 40px; margin: 5px;">
+				<span>热门推荐</span>
+				<span style="margin-left: 220px;">更多</span>
+			</div>
+			<div class="mui-slider">
+				<div class="mui-slider-group" style="margin-left: 10px;height: 200px;">
+					<!--第一个内容区容器-->
+					<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/00000000000.jpg" style="border-radius:10px;" />
+						<span>哈哈</span>
+					</div>
+
+					<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 5px;">
+						<!-- 具体内容 -->
+						<img src="../img/22222222222222.jpg" style="border-radius:10px;" />
+					</div>
+
+					<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 5px;">
+						<!-- 具体内容 -->
+						<img src="../img/11111111111.jpg" style="border-radius:10px;" />
+					</div>
+
+					<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 5px;">
+						<!-- 具体内容 -->
+						<img src="../img/00000000000.jpg" style="border-radius:10px;" />
+					</div>
+					<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 5px;">
+						<!-- 具体内容 -->
+						<img src="../img/11111111111.jpg" style="border-radius:10px;" />
+					</div>
+					<div class="mui-slider-item" style="height: 100px;width: 100px;margin-right: 5px;">
+						<!-- 具体内容 -->
+						<img src="../img/11111111111.jpg" style="border-radius:10px;" />
+					</div>
+
+				</div>
+			</div>
+			<br /><br />
+			<!--//////////////////////////////////-->
+			
+			
+			<link rel="stylesheet" href="../videoCss/video.css" />
+									<link rel="stylesheet" href="../videoCss/Videomain.css" />
+									<script type="text/javascript" src="../Script/html5video.js" ></script>
+									<script type="text/javascript" src="../Script/hls.min.js" ></script>
+									<sc
+									<div class="mui-dome">
+										<h1 class="news_title" id="news_tit">新坦结衣Gakki雪肌精广告</h1>
+										<p class="user_txt">
+											<img src="img/3.jpg" alt="" id="news_img" class="user_img" />
+											<span class="user_name" id="news_name">王者地带</span>
+											<span class="news_time" id="news_time">2017-12-01</span>
+										</p>
+									</div>
+									<!-- 视频播放区域-->
+									<div class="mui-video-Container" id="video_Container">
+										<div class="mui-video-full">
+											<!--加载提示-->
+											<div class="rprogress">
+												<span class="ladtit">加载</span>
+												<div class="rschedule"></div>
+											</div>
+											<!--end-->
+											<!--全屏时后退图标-->
+											<span class="mui-full-back"> 
+									   <svg class="icon" aria-hidden="true">
+									  <use xlink:href="#icon-houtui1"></use>
+									   </svg>
+									    <span class="vtitle"></span>
+											</span>
+											<!--end-->
+											<!--播放按钮-->
+											<span class="mui-pay_ico"> 
+										   <svg class="icon" aria-hidden="true">
+										  <use xlink:href="#icon-bofang1"></use>
+										   </svg>
+										  </span>
+											<!--end-->
+											<div class="v_left"></div>
+											<div class="b_right"></div>
+											<div class="ptime"></div>
+											<div class="mui-video-txt"></div>
+											<!-- 播放进度条-->
+											<div class="mui-videoControls">
+												<span class="mui-time-total mui-quanping"> <!--全屏按钮-->
+										  <span class="mui-time-cout">00:00</span>
+												<!--总时间-->
+												<span class="mui-full-btu">
+										 <svg class="icon" aria-hidden="true">
+							       <use xlink:href="#icon-quanping"></use>
+							       </svg>
+										 </span>
+												</span>
+												<span class="mui-time-current">00:00</span>
+												<!--进度时间-->
+												<div class="mui-progressWrap">
+													<!--可以拖动的进度条-->
+													<div class="mui-wrap-right">
+														<input type="range" id='mui-block-range' value="0" min="0" max="100">
+													</div>
+												</div>
+											</div>
+											<!-- 播放进度条end-->
+										</div>
+									</div>
+									<!--视频播放区域end-->
+
+									<!--以下无关，只为示例-->
+									<p class="text_dome">
+										<b>剧情简介 :</b><br /><!--为了给最疼爱的小老弟菜鸟（克里斯多夫·奈茨 Christopher Knights 配音）庆生，老大（汤姆·麦格拉思 Tom McGrath 配音）带领菜鸟以及好搭档科斯基（克里斯·米勒 Chris Miller 配音）、瑞哥闯入了防守最严密的美国黄金储备中心，只为找到金库尽头仅有的那台销售炸薯条的自动贩卖机。-->
+										<br /> 谁知他们刚刚完成任务没多久，，随后被运到一个神秘的所在。
+										<br />
+									</p>
+							</div>
+							<div id="openvideo">切换视频播放</div>
+
+							<script src="js/html5video.js"></script>
+							<!--//视频JS-->
+							<script src="js/hls.min.js"></script>
+							<!--//如果需要播放m3u8格式需要引入这个JS解码,不需要可以去掉-->
+							<script type="text/javascript" charset="utf-8">
+								mui.init();
+								//初始化插件
+								var htmlvideo = Html5video("#video_Container", {
+									title: "新坦结衣Gakki雪肌精广告", //视频标题，当全屏时会显示
+									url: "2017123101.mp4", //支持本地视频和网络视频，格式MP4
+									img: "img/002.jpg", //视频截图封面
+									time: "02:30", //视频总时间以分钟单位，当网络缓慢时，没办法及时加载出来，如已知可以填写，可不填。
+									autoplay: false, //是否自动播放视频
+									isMobile: false, //是否开启当处于移动网络时，提示用户是否继续播放视频。,不支持浏览器环境
+									isFull: true, //是否点击播放就全屏显示
+									iospay: false, //如果是IOS系统是否采用苹果系统自带播放器, 可以在浏览器或微信中，全屏观看视频
+									drag: true, //禁止拖动,调节,音量和亮度
+									isfull: true, //是否显示全屏按钮
+									prompt: function(video) //当开启isMobile时,这里可以写提示用户的内容,h5+环境才有效
+									{
+										mui.confirm('你当前处于移动手机网络将会消耗手机流量，是否继续播放？', '提示', ["取消", "确定"], function(e) {
+											if(e.index == 1) {
+												video.play();
+											}
+										}, "div");
+									}
+								});
+
+								mui("body").on("tap", "#openvideo", function() {
+									//切换视频播放
+									htmlvideo.getplayUrl({
+										url: "http://onehk-1251146759.cosgz.myqcloud.com/video_171129.mp4",
+										img: "https://zs.manyiwl.com/uploads/image/20171231/1514657764.jpg",
+										title: "悦诗风吟绿色圣诞向珍贵的人传递心意"
+									});
+								});
+							</script>
+			
+			
+			
+			
+			
+			
+			<!--/////////////////////////////-->
+
+			<div class="mui-slider">
+				<div class="mui-slider-group" style="margin-left: 10px;height: 300px;">
+					<!--第一个内容区容器-->
+					<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/22222222222222.jpg" style="border-radius:10px;" />
+						<span>哈哈</span>
+					</div>
+
+					<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/22222222222222.jpg" style="border-radius:10px;" />
+						<span>哈哈</span>
+					</div>
+
+					<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/22222222222222.jpg" style="border-radius:10px;" />
+						<span>哈哈</span>
+					</div>
+					<div class="mui-slider-item" style="height: 200px;width: 150px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/22222222222222.jpg" style="border-radius:10px;" />
+						<span>哈哈</span>
+					</div>
+
+				</div>
+			</div>
+			<!--/////////////////////////////-->
+			<!-- </ul>
+		      </div>
+		    </div>-->
+			<div id="scroll">
+				<div class="scrollItem" id="toTop">
+					<img src="../images/Luxiang.png" /></div>
+
+			</div>
+			<!--/////////////////////////////////-->
+		</div>
+	</body>
+
+</html>

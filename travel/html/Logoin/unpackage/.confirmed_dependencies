@@ -1,0 +1,116 @@
+{
+	"index.html": {
+		"resources": [
+			"layui/css/modules/layer/default/icon.png",
+			"layui/layui.js",
+			"css/default.css",
+			"js/jquery-ui.min.js",
+			"index1.html",
+			"js/jquery.min.js",
+			"js/jquery.mockjax.js",
+			"layui/css/modules/layer/default/layer.css",
+			"img/Starry.jpg",
+			"css/styles.css",
+			"img/user_icon_copy.png",
+			"layui/css/layui.css",
+			"js/Particleground.js",
+			"css/loaders.css",
+			"js/stopExecutionOnTimeout.js",
+			"img/lock_icon_copy.png",
+			"img/key.png",
+			"layui/lay/modules/layer.js",
+			"css/demo.css",
+			"img/tick.png",
+			"css/font.css",
+			"js/Libs/jquery.json.js",
+			"js/common.js",
+			"css/LoginRegister.css",
+			"css/common.css",
+			"js/Libs/swiper-3.3.1.jquery.min.js",
+			"css/ModularForm.css",
+			"js/yanzheng.js",
+			"css/Homepage.css",
+			"css/swiper-3.3.1.min.css",
+			"css/reset.css",
+			"js/Libs/jquery.min.js",
+			"font1/iconfont.js"
+		],
+		"refer": [
+			"index1.html"
+		]
+	},
+	"index1.html": {
+		"resources": [
+			"img/pic2.png",
+			"js/jquery.min2.js",
+			"img/banner1.jpg",
+			"css/style.css",
+			"font0/iconfont.js",
+			"js/demo2.js",
+			"js/form.js",
+			"img/pic4.png",
+			"css/bootstrap.css",
+			"img/pic1.png",
+			"css/demo2.css",
+			"img/payment.jpg",
+			"css/font-awesome.css",
+			"img/pic3.png",
+			"js/bootstrap.js",
+			"js/jquery.min1.js",
+			"index.html",
+			"img/2-1.jpg",
+			"img/4-1.jpg",
+			"img/3-2.jpg",
+			"img/3-1.jpg",
+			"img/1-2.jpg",
+			"img/4-2.jpg",
+			"js/jquery-1.11.1.min.js",
+			"img/2-2.jpg",
+			"img/1-1.jpg",
+			"img/7-3.jpg",
+			"img/7-8.jpg",
+			"img/7-7.jpg",
+			"img/7-6.jpg",
+			"img/7-2.jpg",
+			"img/7-1.jpg",
+			"img/7-4.jpg",
+			"img/7-5.jpg"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"index3.html": {
+		"resources": [
+			"img/pic4.png",
+			"img/pic2.png",
+			"img/pic1.png",
+			"css/demo2.css",
+			"js/jquery.min2.js",
+			"img/pic3.png",
+			"js/demo2.js"
+		],
+		"refer": []
+	},
+	"city.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/app.css",
+			"img/7-3.jpg",
+			"css/mui.min.css",
+			"js/jquery-3.2.1.js",
+			"img/012.jpg",
+			"img/009.jpg",
+			"img/004.jpg",
+			"img/005.jpg",
+			"img/008.jpg",
+			"img/007.jpg",
+			"img/003.jpg",
+			"img/010.jpg",
+			"img/001.jpg",
+			"img/006.jpg",
+			"img/002.jpg",
+			"img/011.jpg"
+		]
+	}
+}

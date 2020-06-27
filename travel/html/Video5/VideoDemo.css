@@ -1,0 +1,137 @@
+	.video-js {
+		font-size: 10px;
+		color: ;
+	}
+	/*暂停时在中间也显示按钮*/
+	
+	.vjs-paused .vjs-big-play-button,
+	.vjs-paused.vjs-has-started .vjs-big-play-button {
+		display: block;
+	}
+	/*///////////*/
+	
+	.video-js .vjs-big-play-button {
+		font-size: 2.5em;
+		line-height: 2.3em;
+		height: 2.5em;
+		width: 2.5em;
+		/*	-webkit-border-radius: 2.5em;
+				-moz-border-radius: 2.5em;*/
+		border-radius: 2.5em;
+		background-color: #73859f;
+		background-color: rgba(115, 133, 159, .4);
+		border-width: 0.15em;
+		margin-top: -1.25em;
+		margin-left: -1.75em;
+	}
+	
+	.vjs-big-play-button .vjs-icon-placeholder {
+		font-size: 1.63em;
+	}
+	
+	.vjs-loading-spinner {
+		font-size: 2.5em;
+		width: 2em;
+		height: 2em;
+		border-radius: 1em;
+		margin-top: -1em;
+		margin-left: -1.5em;
+	}
+	/*.vjs-default-skin .vjs-big-play-button {
+			
+				font-size: 3em;
+				
+				$big-play-height: 1.5em;
+				line-height: $big-play-height;
+				height: $big-play-height;
+				width: $big-play-width;
+				
+				border: 0.06666em solid $primary-foreground-color;
+		
+				border-radius: 0.3em;
+				@if $center-big-play-button {
+				
+					left: 50%;
+					top: 50%;
+					margin-left: -($big-play-width / 2);
+					margin-top: -($big-play-height / 2);
+				}
+				@else {
+				
+					left: 0.5em;
+					top: 0.5em;
+				}
+			}*/
+	/* The default color of control backgrounds is mostly black but with a little
+   bit of blue so it can still be seen on all-black video frames, which are common. */
+	
+	.video-js .vjs-control-bar,
+	.video-js .vjs-big-play-button,
+	.video-js .vjs-menu-button .vjs-menu-content {
+		background-color: $primary-background-color;
+		/* Opacity: 1.0 = 100%, 0.0 = 0% */
+		background-color: rgba($primary-background-color, 0.7);
+	}
+	
+	$slider-bg-color: lighten($primary-background-color, 33%);
+	/* Slider - used for Volume bar and Progress bar */
+	
+	.video-js .vjs-slider {
+		background-color: $slider-bg-color;
+		background-color: rgba($slider-bg-color, 0.5);
+	}
+	/* The slider bar color is used for the progress bar and the volume bar
+   (the first two can be removed after a fix that's coming) */
+	
+	.video-js .vjs-volume-level,
+	.video-js .vjs-play-progress,
+	.video-js .vjs-slider-bar {
+		background: $primary-foreground-color;
+	}
+	/* The main progress bar also has a bar that shows how much has been loaded. */
+	
+	.video-js .vjs-load-progress {
+		/* For IE8 we'll lighten the color */
+		background: lighten($slider-bg-color, 25%);
+		/* Otherwise we'll rely on stacked opacities */
+		background: rgba($slider-bg-color, 0.5);
+	}
+	/* The load progress bar also has internal divs that represent
+   smaller disconnected loaded time ranges */
+	
+	.video-js .vjs-load-progress div {
+		/* For IE8 we'll lighten the color */
+		background: lighten($slider-bg-color, 50%);
+		/* Otherwise we'll rely on stacked opacities */
+		background: rgba($slider-bg-color, 0.75);
+	}
+	
+	.vjs-paused .vjs-big-play-button,
+	.vjs-paused .vjs-has-started .vjs-big-play-button {
+		display: block;
+	}
+	
+/* Show the controls (hidden at the start by default) /////////////////////////////*/
+				
+			/*	.video-js .vjs-control-bar {
+					display: -webkit-box;
+					display: -webkit-flex;
+					display: -ms-flexbox;
+					display: flex;
+				}*/
+				/* Make the demo a little prettier */
+				
+			/*	body {
+					margin-top: 20px;
+					background: #222;
+					text-align: center;
+					color: #aaa;
+					font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+					background: radial-gradient(#333, hsl(200, 30%, 6%));
+				}*/
+				
+			/*	a,
+				a:hover,
+				a:visited {
+					color: #76DAFF;
+				}*/

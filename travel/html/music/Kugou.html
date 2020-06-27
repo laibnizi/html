@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jqmobi.js"></script>
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">音乐是心情</h1>
+		</header>
+		<section id="menu" style="background-color:lightcoral;">
+
+			<ul class="menu_tagList">
+
+				<li id="newSong" class="menu_hover">新歌</li>
+
+				<li id="songCharts">排行</li>
+
+				<li id="singer">歌手</li>
+				<li id="radioStation">电台</li>
+
+			</ul>
+
+		</section>
+		<div style="background-color: aquamarine;height: 200px;margin-top: 80px;">
+				<script type="text/javascript" src="../../js/mui.min.js" ></script>
+				<script type="text/javascript" src="../../js/jquery-1.11.3.js" ></script>
+		<script type="text/javascript">
+			mui.init();	
+			mui.ready(function() {
+			/*document.getElementById("btu").addEventListener("click",function(){*/
+				$("body").on("tap","#btu",function(){
+				var val=document.getElementById("songname").value;
+			
+						var ur = 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp?g_tk=5381&uin=0&format=jsonp&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&w='+val+' & zhidaqu = 1 & catZhida = 1 & t = 0 & flag = 1 & ie = utf - 8 & sem = 1 & aggr = 0 & perpage = 20 & n = 20 & p = 1 & remoteplace = txt.mqq.all & _ = 1520833663464 ';
+						$.ajax({
+								url: ur,
+								type: "get",
+								dataType: 'jsonp',
+								jsonp: "callback",
+								jsonpCallback: 'callback',
+								
+								success: function(data) {
+									console.log(data);
+									var songmid = data.data.song.list[0].songmid;
+									/*alert(songmid);*/
+									var songsrc='http://ws.stream.qqmusic.qq.com/C100'+songmid+'.m4a?fromtag=0&guid=126548448';
+										
+									document.getElementById("test").src= songsrc;
+										},
+										error: function(e) {
+											console.log('error');
+
+										}
+								});
+
+			}
+)
+						});
+		</script>
+	
+   <div class="mui-content">
+       
+  
+		<input type="text" id="songname" /><input type="button" id="btu"/>
+		<audio src="" controls="controls" id="test" autoplay="autoplay" >
+			Your browser does not support the audio element.
+		</audio>
+ </div>
+	<div ></div>
+			
+		</div>
+		<section id="content">
+
+		</section>
+		<section id="playwrap">
+
+			<div id="playContent">
+
+				<div>
+
+					<audio id="myMusic"></audio>
+
+				</div>
+
+				<div onClick="myControl.selectTime(event)" id="progressWrap">
+
+					<div id="progress"></div>
+
+				</div>
+
+				<div class="img">
+
+					<img id="singerHead" src="http://m.kugou.com/app/../static/images/sinheadNew.png">
+
+				</div>
+
+				<div class="info">
+
+					<div class="songname clearfix">
+
+						<label id="musicTitle" for="musicTitle">最深的蓝</label>
+
+						<label style="display: none;" id="songname" for="songname" style="color: rgb(204, 0, 0);">此手机不支持html5播放，扔了吧</label>
+
+						<label id="timeshow" for="time"><span id="currentTime">00:00</span>/<span id="totleTime">00:00</span></label>
+
+					</div>
+
+					<div class="audioControl">
+
+						<a id="prevButton" class="last" onClick="myControl.prev()" href="javascript:;"></a>
+
+						<a id="playButton" class="play" onClick="myControl.mainControl()" href="javascript:;"></a>
+
+						<a id="nextButton" class="next" onClick="myControl.next()" href="javascript:;"></a>
+
+						<a id="modeButton" class="mode-default" onClick="myControl.selectMode()" href="javascript:;"></a>
+
+						<a class="border"></a>
+
+						<a id="playDetail" class="showDetail" href="javascript:;"></a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+		<div style="display:none;" id="oWindow">dfsdfsdfdsf</div>
+
+	</body>
+
+	<script type="text/javascript" src="js/all.js"></script>
+	<script type="text/javascript" src="../../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+
+</html>

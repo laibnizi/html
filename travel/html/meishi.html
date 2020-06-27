@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="../css/mui.min.css" />
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.plusReady(function() {
+				var _self = plus.webview.currentWebview();
+				var group = new webviewGroup(_self.id, {
+					items: [{
+						id: "tab-top-subpage-1.html",
+						url: "tab-top-subpage-1.html",
+						extras: {}
+					}, {
+						id: "tab-top-subpage-2.html",
+						url: "tab-top-subpage-2.html",
+						extras: {}
+					}, {
+						id: "tab-top-subpage-3.html",
+						url: "tab-top-subpage-3.html",
+						extras: {}
+					}, {
+						id: "tab-top-subpage-4.html",
+						url: "tab-top-subpage-4.html",
+						extras: {}
+					}, {
+						id: "tab-top-subpage-5.html",
+						url: "tab-top-subpage-5.html",
+						extras: {}
+					}],
+					onChange: function(obj) {
+						var c = document.querySelector(".mui-control-item.mui-active");
+						if(c) {
+							c.classList.remove("mui-active");
+						}
+						var target = document.querySelector(".mui-scroll .mui-control-item:nth-child(" + (parseInt(obj.index) + 1) + ")");
+						target.classList.add("mui-active");
+						if(target.scrollIntoView) {
+							target.scrollIntoView();
+						}
+					}
+				});
+				mui(".mui-scroll").on("tap", ".mui-control-item", function(e) {
+					var wid = this.getAttribute("data-wid");
+					group.switchTab(wid);
+				});
+
+			});
+			mui.back = function() {
+				var _self = plus.webview.currentWebview();
+				_self.close("auto");
+			}
+			$(function() {
+				mui("body").on("tap", "a", function() {
+					window.top.location.href = this.href;
+				});
+			});
+		</script>
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			
+			.lipos {
+				position: relative;
+				z-index: 999;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<div class="mui-input-row mui-left" style="padding: 5px; ">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</div>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear" placeholder="输入想要去的城市">
+				</div>
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+
+						<a class="mui-control-item " href="beijing.html" data-wid="tab-top-subpage-1.html">
+							景点
+						</a>
+						<a class="mui-control-item mui-active" href="m" data-wid="tab-top-subpage-2.html">
+							美食
+						</a>
+						<a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html">
+							跟团游
+						</a>
+						<a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html">
+							自由行
+						</a>
+						<a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html">
+							当地玩乐
+						</a>
+						<a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html">
+							酒店
+						</a>
+						<a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html">
+							购物
+						</a>
+						<a class="mui-control-item" href="#item3mobile" data-wid="tab-top-subpage-3.html">
+							问答
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		</div>
+		<div class="mui-content" style="background-color:#fff">
+			<br /><br />
+			<ul class="mui-table-view mui-grid-view" style="position: relative;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 lipos">
+					<a href="meishishow.html" class="itema">
+						<img class="mui-media-object" src="imgs/dadongkaoya.jpg">
+						<div class="mui-media-body">大董烤鸭工体店</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="imgs/shenchahaihuiguan.jpg">
+						<div class="mui-media-body">什刹海会馆</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#"><img class="mui-media-object" src="imgs/donglaishunfandian.jpg">
+						<div class="mui-media-body">董来顺饭店</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="imgs/moerdunniupaifang.jpg">
+						<div class="mui-media-body">莫尔顿牛排坊</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="imgs/qingfnegbaozipu.jpg">
+						<div class="mui-media-body">庆丰包子铺</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="imgs/tonghejufandian.jpg">
+						<div class="mui-media-body">同和居饭店</div>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell ">
+				<a class="mui-navigate-right" href="#">更多相关北京美食</a>
+
+				</div>
+			</li>
+		</ul>
+	</body>
+
+</html>

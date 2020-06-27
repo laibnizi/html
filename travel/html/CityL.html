@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="cssd/mui.indexedlist.css" />
+		<style>
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选择机场</h1>
+			<!--<div class="mui-indexed-list-search mui-input-row mui-search" style="border-radius: 15px; background-color: hotpink;">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索机场" style="border-radius: 15px;background: rgba(51, 153, 238, 0.3);">
+				</div>-->
+				<div class="mui-segmented-control" style="margin-top: 35px;" style="width: 100%;">
+				    <a class="mui-control-item mui-active" href="bb.html" data-wid="bb.htm" style="width:250px;">国内</a>
+				    <a class="mui-control-item" href="Fz.html" data-wid="bb.htm"style="width: 50%;">国外</a>
+				</div>
+			
+		</header>
+				
+		<!--////////////////////////////////////////////////////-->
+		<div class="mui-content">
+		    	
+		</div>
+				<script type="text/javascript" src="../js/webviewGroup.js" ></script>
+		<script>
+			mui.init();
+			
+			mui.plusReady(function() {
+				var _self = plus.webview.currentWebview();
+				var group = new webviewGroup(_self.id, {
+					items: [{
+						id: "bb.html",
+						url: "bb.html",
+						extras: {}
+					}, {
+						id: "Fz.html",
+						url: "Fz.html",
+						extras: {}
+					
+					}],
+					onChange: function(obj) {
+						var c = document.querySelector(".mui-control-item.mui-active");
+						if(c) {
+							c.classList.remove("mui-active");
+						}
+						var target = document.querySelector(".mui-scroll .mui-control-item:nth-child(" + (parseInt(obj.index) + 1) + ")");
+						target.classList.add("mui-active");
+						if(target.scrollIntoView) {
+							target.scrollIntoView();
+						}
+					}
+				});
+				mui(".mui-segmented-control").on("tap", ".mui-control-item", function(e) {
+					var wid = this.getAttribute("data-wid");
+					group.switchTab(wid);
+				});
+
+			});
+			mui.back = function() {
+				var _self = plus.webview.currentWebview();
+				_self.close("auto");
+			}
+		</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>城市大全</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="css/app.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
+		<style>
+			.mui-row.mui-fullscreen>[class*="mui-col-"] {
+				height: 100%;
+			}
+			
+			.mui-col-xs-3,
+			.mui-control-content {
+				overflow-y: auto;
+				height: 100%;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				line-height: 50px;
+				width: 100%;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				background-color: #fff;
+			}
+			
+			.pic {
+				width: 100%;
+			}
+			
+			.mui-card {
+				margin-top: 0px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			var controls = document.getElementById("segmentedControls");
+			var contents = document.getElementById("segmentedControlContents");
+			
+			
+			contents.querySelector('.mui-control-content').classList.add('mui-active');
+			$(function() {
+				mui("body").on("tap", "a", function() {
+					window.top.location.href = this.href;
+				});
+				
+				$("#content1").show();
+				
+				$("#content2").hide();
+				$("#content3").hide();
+				$("#content4").hide();
+				mui("body").on("tap", "#content2", function() {
+					$("#content2").show();
+					$("#content1").hide();
+					$("#content3").hide();
+					$("#content4").hide();
+				});
+				mui("body").on("tap", "#content3", function() {
+					$("#content3").show();
+					$("#content1").hide();
+					$("#content2").hide();
+					$("#content4").hide();
+				});
+				mui("body").on("tap", "#content1", function() {
+					$("#content1").show();
+					$("#content3").hide();
+					$("#content2").hide();
+					$("#content4").hide();
+				});
+				mui("body").on("tap", "#content4", function() {
+					$("#content1").hide();
+					$("#content3").hide();
+					$("#content2").hide();
+					$("#content4").show();
+				});
+			});
+		</script>
+	</head>
+	<style type="text/css">
+				.flex-container {
+					display: -webkit-flex;
+					display: flex;
+					-webkit-justify-content: space-around;
+					justify-content: space-around;
+					width: 100%;
+					/*height: 100px;*/
+					/*background-color: lightgrey;*/
+				}
+			
+				}
+			</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">城市分布</h1>
+		</header>
+		<div class="mui-content mui-row mui-fullscreen">
+			<div class="mui-col-xs-3">
+				<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+					<a class="mui-control-item" href="#content1">国外</a>
+					<a class="mui-control-item" href="#content2">北京</a>
+					<a class="mui-control-item" href="#content3">天津</a>
+					<a class="mui-control-item" href="#content4">上海</a>
+				</div>
+			</div>
+			<div id="segmentedControlContents" class="mui-col-xs-9" style="border-left: 1px solid #c8c7cc;">
+				<div id="content1" class="mui-control-content mui-active">
+					<ul class="mui-table-view">
+						<div class="flex-container">
+						<div class="mui-card" >
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/001.jpg" />
+								<div class="mui-media-body">
+									意大利
+									<p>美丽小镇</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/001.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+你的黑乎乎的
+							</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/002.jpg" />
+								<div class="mui-media-body">
+									荷兰
+									<p>著名的风车</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/002.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+健康是福
+							</div>
+						</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/003.jpg" />
+								<div class="mui-media-body">
+									巴黎
+									<p>夜色中的埃菲尔铁塔</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/003.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+							</div>
+						</div>
+					</ul>
+				</div>
+
+				<div id="content2" class="mui-control-content mui-active">
+					<ul class="mui-table-view">
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/004.jpg" />
+								<div class="mui-media-body">
+									鸟巢
+									<p>最美丽的体育馆</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/004.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+
+							</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/005.jpg" />
+								<div class="mui-media-body">
+									景山
+									<p>故宫对面的美丽公园</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/005.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+
+							</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/006.jpg" />
+								<div class="mui-media-body">
+									长城
+									<p>雄伟的东方长龙</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/006.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+							</div>
+						</div>
+					</ul>
+				</div>
+
+				<div id="content3" class="mui-control-content mui-active">
+					<ul class="mui-table-view">
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/007.jpg" />
+								<div class="mui-media-body">
+									和平路
+									<p>天津的商业中心</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/007.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+
+							</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/008.jpg" />
+								<div class="mui-media-body">
+									意大利风景区
+									<p>海河附近的意大利风景区</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/008.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+
+							</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/009.jpg" />
+								<div class="mui-media-body">
+									天津之眼
+									<p>梦幻般的摩天路</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src=" imgs/009.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+							</div>
+						</div>
+					</ul>
+				</div>
+                
+                <div id="content4" class="mui-control-content mui-active">
+					<ul class="mui-table-view">
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/011.jpg"/>
+								<div class="mui-media-body">
+									体育馆
+									<p>夜色中璀璨美丽的体育馆</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/011.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+
+							</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/010.jpg" />
+								<div class="mui-media-body">
+									教堂
+									<p>虔诚的教徒聚集在这里</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/010.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+
+							</div>
+						</div>
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="imgs/012.jpg" />
+								<div class="mui-media-body">
+									东方之珠
+									<p>名副其实的东方之珠</p>
+								</div>
+							</div>
+							<div class="mui-card-content">
+								<img src="imgs/012.jpg" class="pic" />
+							</div>
+							<div class="mui-card-footer">
+							</div>
+						</div>
+					</ul>
+				</div>
+			</div>
+
+	</body>
+
+</html>

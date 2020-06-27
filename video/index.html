@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>毕设</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/lanrenzhijia.css" />
+<style type="text/css">
+			.container {
+				width: 100%;
+				height: 700px;
+				/*margin: 20px auto;*/
+				background: url(images/161.png), 
+				url("https://user-images.githubusercontent.com/8554143/34369175-c14ae23e-eaf4-11e7-96f1-e146e5e5a96b.jpg");
+				background-size: cover;
+				/*background-blend-mode: multiply;*/
+				/*background-blend-mode: darken;*/
+				/*background-blend-mode: luminosity;*/
+				background-blend-mode: lighten;
+			}
+		</style>
+		<style type="text/css">
+			#skull {
+				height: 150px;
+				width 150px;
+			}
+			
+			#skull #head {
+				transform: translateY(0);
+				transition-duration: 0.3s;
+				transition-timing-function: cubic-bezier(0.37, 1, 0.5, 0.99);
+			}
+			
+			#skull #jaw {
+				transform: translateY(0);
+				transition-duration: 0.3s;
+				transition-timing-function: cubic-bezier(0.37, 1, 0.5, 0.99);
+			}
+			
+			#skull #tongue {
+				transform: translateY(0);
+				transition-duration: 0.3s;
+				transition-timing-function: cubic-bezier(0.37, 1, 0.5, 0.99);
+			}
+			
+			#skull #shadow {
+				transform: scale(1);
+				transform-origin: 50%;
+				transition-duration: 0.3s;
+				transition-timing-function: cubic-bezier(0.37, 1, 0.5, 0.99);
+			}
+			
+			#skull:hover #head {
+				transform: translateY(-20px);
+			}
+			
+			#skull:hover #jaw {
+				transform: translateY(20px);
+			}
+			
+			#skull:hover #tongue {
+				transform: translateY(70px);
+			}
+			
+			#skull:hover #shadow {
+				transform: scale(1.2);
+			}
+			
+			#skull:active #tongue {
+				transform: translateY(-20px);
+			}
+			
+			body {
+				font-family: 'Source Code Pro';
+				font-size: 12px;
+				text-align: center;
+				padding-top: 75px;
+				text-rendering: optimizePrecision;
+			}
+			
+			body p {
+				transform: translateY(-75px);
+			}
+			
+			body a {
+				color: #BE1622;
+			}
+		</style>
+</head>
+<body>
+	<div style="position: fixed;margin-right: -20px;">
+		<a href="https://myohoo.cn">
+		<svg id="skull" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" enable-background="new 0 0 640 640">
+			<g id="jaw" stroke="#1D1D1B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+				<path fill="#fff" d="M252.4 372.8s28.1 12.3 67.6 12.3 67.6-12.3 67.6-12.3v42.9s-37.8 15.5-67.6 15.5-67.6-15.5-67.6-15.5v-42.9z" />
+				<path fill="none" d="M320 388.8V402M297.5 383.5V402M274.9 379.8V402M342.5 386.5V402M365.1 379.8V402" />
+			</g>
+			<g id="tongue" stroke="#1D1D1B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+				<path fill="#BE1622" d="M283.9 275.4v72.1c0 19.9 16.1 36.1 36.1 36.1s36.1-16.1 36.1-36.1v-72.1h-72.2z" />
+				<path fill="none" d="M320 275.4v77.8" />
+			</g>
+			<g id="head">
+				<path fill="#fff" stroke="#1D1D1B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M415.7 243.3c0-52.8-42.8-95.7-95.7-95.7s-95.7 42.8-95.7 95.7c0 21 6.8 40.4 18.2 56.1L231 310.9l21.3 21.3v40.5s28.1 12.3 67.6 12.3 67.6-12.3 67.6-12.3v-40.5l21.3-21.3-11.5-11.5c11.6-15.8 18.4-35.2 18.4-56.1z" />
+				<path fill="#1D1D1B" stroke="#1D1D1B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M299.2 332.3l20.8-36 20.8 36z" />
+				<circle fill="#1D1D1B" cx="278.4" cy="268.4" r="34.1" />
+				<circle fill="#1D1D1B" cx="361.6" cy="268.4" r="34.1" />
+				<path fill="none" stroke="#1D1D1B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M320 385v-26.4M297.5 383.5v-26.4M274.9 379.7v-26.4M342.5 383.5v-26.4M365.1 379.8v-26.5" />
+			</g>
+			<ellipse id="shadow" fill="#C6C6C6" cx="320" cy="479.4" rx="45.1" ry="13" />
+		</svg>
+</a>
+	</div>
+	<div class="container">
+		
+		
+<video id="video" controls="" preload="none" poster="images/poster.png" muted width="100%">
+      <source id="mp4" src="images/bs.mp4" type="video/mp4">
+      <source id="webm" src="images/trailer.webm" type="video/webm">
+      <source id="ogv" src="images/trailer.ogv" type="video/ogg">
+      <p>Your user agent does not support the HTML5 Video element.</p>
+</video>
+
+
+<!--<p>Your browser does not support the HTML5 Video element.</p>-->
+</video>
+
+    <div id="slides">
+   
+      <div>
+        <h2 class="charlie" data-animations="fade" data-times="0">One</h2>
+        <h2 class="charlie circle" data-animations="grow" data-times="0"></h2>
+      </div>
+      
+      <div>
+        <h2 class="charlie" data-animations="fade" data-times="5.5">Two</h2>
+        <h2 class="charlie circle" data-animations="grow" data-times="5.5"></h2>
+      </div>
+      
+      <div>
+        <h2 class="charlie" data-animations="fade" data-times="8">Three</h2>
+        <h2 class="charlie circle" data-animations="grow" data-times="8"></h2>
+      </div>
+      
+      <div>
+        <h2 class="charlie" data-animations="fade" data-times="12">Four</h2>
+        <h2 class="charlie circle" data-animations="grow" data-times="12"></h2>
+      </div>
+      
+      <div>
+        <h2 class="charlie" data-animations="fade" data-times="16">Five</h2>
+        <h2 class="charlie circle" data-animations="grow" data-times="16"></h2>
+      </div>
+      
+      <div>
+        <h2 class="charlie" data-animations="fade" data-times="20">Six</h2>
+        <h2 class="charlie circle" data-animations="grow" data-times="20"></h2>
+      </div>
+      
+      <div>
+        <h2 class="charlie" data-animations="fade" data-times="24">Seven</h2>
+        <h2 class="charlie circle" data-animations="grow" data-times="24"></h2>
+      </div>
+      
+    </div>
+    <div id="count">
+
+    </div>
+    </div>
+    <script src="js/charlie.js"></script>
+    <script>
+    CHARLIE.setup(document.getElementById("video"));
+    </script>
+</body>
+</html>

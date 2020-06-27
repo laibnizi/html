@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/util.js"></script>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			html,
+			body {
+				background: rgba(8, 45, 84, .8);
+			}
+			
+			.mui-bar .mui-pull-left .mui-icon {
+				padding-right: 5px;
+				font-size: 28px;
+			}
+			
+			.mui-bar .mui-btn {
+				font-weight: normal;
+				font-size: 17px;
+			}
+			
+			.mui-bar .mui-btn-link {
+				top: 1px;
+			}
+			
+			.mui-content img {
+				width: 100%;
+			}
+			
+			.hm-description {
+				margin: 15px;
+			}
+			
+			.hm-description>li {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			/*///////////////圆形容器*/
+			
+			.flex-container {
+				display: -webkit-flex;
+				display: flex;
+				-webkit-justify-content: space-around;
+				justify-content: space-around;
+				width: 100%;
+				height: 100px;
+				margin-top: 15px;
+				/*background-image: url(../img/033.jpg);*/
+				position: relative;
+				-webkit-flex-wrap: wrap;
+               flex-wrap: wrap;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script>
+			mui("body").on("tap", "#CT", function() {
+				mui.openWindow({
+					id: 'CT',
+					url: 'iChoseCity.html'
+				})
+
+			});
+			mui("body").on("tap", "#YouJi", function() {
+				mui.openWindow({
+					id: 'YouJi',
+					url: 'YouJi.html'
+				})
+
+			});
+			mui("body").on("tap", "#DYou", function() {
+				mui.openWindow({
+					id: 'Dou',
+					url: 'Dyou.html'
+				})
+
+			});
+			mui("body").on("tap", "#myMusic", function() {
+				mui.openWindow({
+					id: 'myMusic',
+					url: 'music/Kugou.html'
+				})
+
+			});
+				mui("body").on("tap", "#More", function() {
+				mui.openWindow({
+					id: 'More',
+					url: 'Caidan.html'
+				})
+
+			});
+			mui("body").on("tap", "#ChoseCity", function() {
+				mui.openWindow({
+					id: 'ChoseCity',
+					url: 'city.html'
+				})
+
+			});
+			mui("body").on("tap", "#Beijing", function() {
+				mui.openWindow({
+					id: 'Beijing',
+					url: 'beijing.html'
+				})
+
+			});
+		</script>
+		<header id="header" class="mui-bar mui-bar-transparent" style="background: rgba(51, 153, 238, .0);zoom: 1; ">
+			<a id="CT"><span style="color: white;font-size: 20px;margin-top: 20px;">北京</span><span><img src="../images/PuDw.png"  style="margin-top: 10px;"/></span></a>
+
+			<!--<span class="mui-icon mui-icon-arrowdown" style="color: white;font-size: 20px;"></span>-->
+			<button class="sosocity" type="button" style="height: 30px;left: 80px;margin-top: 6px;width: 65%;border-radius: 16px;border-style: none;position: absolute;background: rgba(255, 255, 255, .3);">
+		   	  <span class="placeholder " style="margin-top: -10px;float: right;"><span class="mui-icon mui-icon-search"></span><span class="text">搜索</span></span>
+		   </button>
+			<a><span class="mui-icon  mui-pull-right" id="share"><img src="../images/shar.png" /></span></a>
+		</header>
+
+		<div class="mui-content">
+			<!--静态图片-->
+			<img id="img1" src="../img/01.jpg" />
+			<!--轮播图片-->
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+
+			});
+
+			/*var slider = document.getElementById("slider");
+			mui('.mui-input-group').on('change', 'input', function() {
+				if(this.checked) {
+					switch(this.value) {
+						case 'static':
+							document.getElementById("img1").className = "";
+							document.getElementById("slider").classList.add("mui-hidden");
+							break;
+						case 'slider':
+							document.getElementById("img1").className = "mui-hidden";
+							if(slider.classList.contains("mui-hidden")) {
+								document.getElementById("slider").classList.remove("mui-hidden");
+							}
+							break;
+					}
+				}
+			});
+*/
+		</script>
+		<div>
+			<div id="" class="flex-container">
+
+				<div style="text-align: center; height: 60px; width: 60px;border-radius: 50%; background: rgba(255, 20, 147, 0.9); border-color:solid 1px white;"><img src="../images/zhibo.png" style="align-content: center;margin: 16px;" />
+					<span style="color: white;"><b>直播</b></span>
+				</div>
+				<div id="YouJi" style="text-align: center; height: 60px; width: 60px;border-radius: 50%; background: rgba(0, 255, 127, .8);border-color:solid 1px white;"><img src="../images/youJi.png" style="align-content: center;margin: 16px;" />
+					<span style="color: white;"><b>游记</b></span>
+				</div>
+				<div style="text-align: center; height: 60px; width: 60px;border-radius: 50%;background: rgba(255, 99, 71, 1);border-color:solid 1px white;"><img src="../images/Friend.png" style="align-content: center;margin: 16px;" />
+					<span style="color: white;"><b>驴友</b></span>
+				</div>
+
+			</div>
+			<!--//////////////////////-->
+			<div id="" class="flex-container">
+
+				<div id="DYou" style="text-align: center; height: 60px; width: 60px;border-radius: 50%; background: rgba(0, 191, 255, .8); border-color:solid 1px white;"><img src="../images/Daoyou.png" style="align-content: center;margin: 16px;" />
+					<span style="color: white;"><b>导游</b></span>
+				</div>
+				<div id="myMusic" style="text-align: center; height: 60px; width: 60px;border-radius: 50%; background: rgba(255, 48, 48, 1);border-color:solid 1px white;"><img src="../images/YinYue.png" style=" margin: 16px; align-content: center;" />
+					<span style="color: white;"><b>音乐</b></span>
+				</div>
+				<div id="More" style="text-align: center; height: 60px; width: 60px;border-radius: 50%; background-color: palevioletred;border-color:solid 1px white;"><img src="../images/mor.png" style="align-content: center;margin: 16px;" />
+					<span style="color: white;"><b>更多</b></span</div>
+
+			</div>
+			
+		</div>
+		<div style="height: 15px;background-color:lightblue;"></div>
+		<div id="" style="background-color: white;font-size: 25px;text-align: center;height: 35px;">
+			<span style="line-height: 35px;color: green;"><b>-目的地推选-</b></span>
+				</div>
+				<!--、、、、、、、、、、、、、、、-->
+
+				<!--////////////////////////////////////////-->
+				<ul class="mui-table-view mui-grid-view">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a href="">
+							<img class="mui-media-object" src="../img/45.jpg">
+							<div class="mui-media-body">海南夏日</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a href="">
+							<img class="mui-media-object" src="../img/32.jpg">
+							<div class="mui-media-body">江南风情</div>
+						</a>
+					</li>
+
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a href="#">
+							<img class="mui-media-object" src="../img/pic4.png">
+							<div class="mui-media-body">极地极光</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a href="#">
+							<img class="mui-media-object" src="../img/36.jpg">
+							<div class="mui-media-body">岭南花香</div>
+						</a>
+					</li>
+				</ul>
+				<div style="height: 15px;background-color: white;"></div>
+				<div class="flex-container" style="background-color: white;margin-top: -5px;height: 120px;">
+					<div id="" style="height: 40px;width:75px; background-color:seashell;text-align: center;border: 1px solid lightgray;">
+						<span style="line-height: 40px;"><b>上海</b></span>
+					</div>
+					<div id="Beijing" style="height: 40px;width:75px; background-color:salmon;text-align: center;">
+						<span style="line-height: 40px;">北京</span>
+					</div>
+					<div id="" style="height: 40px;width:75px; background-color: seashell;text-align: center;">
+						<span style="line-height: 40px;">西安</span>
+					</div>
+					<div id="" style="height: 40px;width:75px; background-color: seashell;text-align: center;">
+						<span style="line-height: 40px;">云南</span>
+					</div>
+					<div id="" style="height: 40px;width:75px; background-color: seashell;text-align: center;">
+						<span style="line-height: 40px;">南京</span>
+					</div>
+					<div id="" style="height: 40px;width:75px; background-color: seashell;text-align: center;">
+						<span style="line-height: 40px;">张家口</span>
+					</div>
+					<div id="" style="height: 40px;width:75px; background-color: seashell;text-align: center;">
+						<span style="line-height: 40px;">新疆</span>
+					</div>
+					<div id="" style="height: 40px;width:75px; background-color:seashell;text-align: center;">
+						<span style="line-height: 40px;color:;">青海</span>
+					</div>
+				</div>
+                    <div id="ChoseCity" style="height: 60px;background-color: white;text-align: center;line-height: 60px;color: green;">帮你选地<span class="mui-icon mui-icon-arrowright"></span></div>
+				<div style="height: 15px;background-color:lightblue;"></div>
+				<ul class="mui-table-view mui-grid-view">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6">
+						<a href="#">
+							<img class="mui-media-object" src="../img/022.jpg">
+							<div class="mui-media-body">华山</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6">
+						<a href="#">
+							<img class="mui-media-object" src="../img/023.jpg">
+							<div class="mui-media-body">衡山</div>
+						</a>
+					</li>
+				</ul>
+				<ul class="mui-table-view mui-grid-view">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6">
+						<a href="#">
+							<img class="mui-media-object" src="../img/020.jpg">
+							<div class="mui-media-body">民宿</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6">
+						<a href="#">
+							<img class="mui-media-object" src="../img/021.jpg">
+							<div class="mui-media-body">酒店</div>
+						</a>
+					</li>
+				</ul>
+				<div style="height: 7px;background-color:lightblue;"></div>
+				<div style="height: 60px;background-color: white;text-align: center;line-height: 60px;color: green;">土味特产<span class="mui-icon mui-icon-arrowright"></span></div>
+	<!--///////////////////////////////////////////-->
+	<div class="mui-slider" style="background-color: white;">
+				<div class="mui-slider-group" style="margin-left: 10px;height: 200px;">
+					<!--第一个内容区容器-->
+					<div class="mui-slider-item" style="height: 150px;width: 120px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/31.jpg" style="border-radius:10px;" />
+						<span style="color: green;"><b>新疆烤羊肉串</b></span>
+					</div>
+					<div class="mui-slider-item" style="height: 150px;width: 120px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/32.jpg" style="border-radius:10px;" />
+						<span style="color:red;"><b>内蒙手扒肉</b></span>
+					</div>
+					<div class="mui-slider-item" style="height: 150px;width: 120px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/33.jpg" style="border-radius:10px;" />
+						<span style="color:aquamarine;"><b>凯里酸汤鱼</b></span>
+					</div>
+					<div class="mui-slider-item" style="height: 150px;width: 120px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/34.jpg" style="border-radius:10px;" />
+						<span style="color:lightcoral;"><b>陕北面皮</b></span>
+					</div>
+					<div class="mui-slider-item" style="height: 150px;width: 120px;margin-right: 5px;text-align: center;">
+						<!-- 具体内容 -->
+						<img src="../img/35.jpg" style="border-radius:10px;" />
+						<span style="color:darkcyan;"><b>四川麻辣鸡丝</b></span>
+					</div>
+
+					
+				</div>
+			</div>
+	<!--///////////////////////////////-->
+	</body>
+	<script>
+		var shares = {};
+		mui.plusReady(function() {
+			plus.share.getServices(function(s) {
+				if(s && s.length > 0) {
+					for(var i = 0; i < s.length; i++) {
+						var t = s[i];
+						shares[t.id] = t;
+					}
+				}
+			}, function() {
+				console.log("获取分享服务列表失败");
+			});
+		});
+		//分享链接点击事件
+		document.getElementById("share").addEventListener('tap', function() {
+			var ids = [{
+					id: "weixin",
+					ex: "WXSceneSession"
+				}, {
+					id: "weixin",
+					ex: "WXSceneTimeline"
+				}, {
+					id: "sinaweibo"
+				}, {
+					id: "tencentweibo"
+				}, {
+					id: "qq"
+				}],
+				bts = [{
+					title: "发送给微信好友"
+				}, {
+					title: "分享到微信朋友圈"
+				}, {
+					title: "分享到新浪微博"
+				}, {
+					title: "分享到腾讯微博"
+				}, {
+					title: "分享到QQ"
+				}];
+			plus.nativeUI.actionSheet({
+				cancel: "取消",
+				buttons: bts
+			}, function(e) {
+				var i = e.index;
+				if(i > 0) {
+					var s_id = ids[i - 1].id;
+					var share = shares[s_id];
+					if(share.authenticated) {
+						shareMessage(share, ids[i - 1].ex);
+					} else {
+						share.authorize(function() {
+							shareMessage(share, ids[i - 1].ex);
+						}, function(e) {
+							console.log("认证授权失败：" + e.code + " - " + e.message);
+						});
+					}
+				}
+			});
+		});
+
+		function shareMessage(share, ex) {
+			var msg = {
+				extra: {
+					scene: ex
+				}
+			};
+			msg.href = "http://www.dcloud.io/hellomui/";
+			msg.title = "欢迎使用Com.cn团队的产品";
+			msg.content = "我正在体验UOXI，是非常好的一款APP呢";
+			if(~share.id.indexOf('weibo')) {
+				msg.content += "；体验地址：http://www.dcloud.io/hellomui/";
+			}
+			msg.thumbs = ["_www/images/logo.png"];
+			share.send(msg, function() {
+				console.log("分享到\"" + share.description + "\"成功！ ");
+			}, function(e) {
+				console.log("分享到\"" + share.description + "\"失败: " + e.code + " - " + e.message);
+			});
+		}
+		//去评分
+		document.getElementById("rate").addEventListener('tap', function() {
+			if(mui.os.ios) {
+				location.href = 'https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8';
+			} else if(mui.os.android) {
+				plus.runtime.openURL("market://details?id=io.dcloud.HelloMUI", function(e) {
+					plus.runtime.openURL("market://details?id=io.dcloud.HelloMUI", function(e) {
+						mui.alert("360手机助手和应用宝，你一个都没装，暂时无法评分，感谢支持");
+					}, "com.qihoo.appstore");
+				}, "com.tencent.android.qqdownloader");
+			}
+		});
+	</script>
+
+</html>

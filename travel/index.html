@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>首页</title>
+		<link rel="stylesheet" href="html/cssd/normalize.css" />
+		<link rel="stylesheet" href="html/cssd/default.css" />
+
+		<link rel="stylesheet" href="html/cssd/bootstrap-theme.min.css" />
+
+	<link rel="stylesheet" href="html/cssd/bootstrap.min.css" />
+
+	<link rel="stylesheet" href="html/cssd/site.css" />
+<link rel="stylesheet" href="css/mui.css" />
+<link rel="stylesheet" href="css/mui.min.css" />
+		<script src="js/mui.min.js"></script>
+		
+		<script type="text/javascript">
+			var ws = null,
+				wn = null;
+			// H5 plus事件处理
+			function plusReady() {
+				ws = plus.webview.currentWebview(); //获得当前的窗口
+				// 预创建新窗口（显示在可视区域外）
+				wn = plus.webview.create('html/menu.html', 'newdrag', {
+					right: '100%',
+					render: 'always'
+				});
+				wn.show('none');
+				// 右滑隐藏新窗口
+				wn.drag({
+					direction: 'left',
+					moveMode: 'followFinger'
+				}, {
+					view: ws,
+					moveMode: 'follow'
+				}, function(e) {
+					console.log('Right drag event: ' + JSON.stringify(e));
+				});
+			}
+			if(window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+			// 窗口组合动画
+			function webviewAnimation() {
+				plus.webview.startAnimation({
+						view: ws,
+						styles: {
+							fromLeft: '0',
+							toLeft: '100%'
+						},
+						action: 'none'
+					}, {
+						view: wn,
+						styles: {
+							fromLeft: '0',
+							toLeft: '0'
+						},
+						action: 'none'
+					},
+					function(e) {
+						console.log('Animation finished: ' + JSON.stringify(e));
+					});
+			}
+		</script>
+		<style>
+				html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+				padding-bottom: 51px;
+			}
+			/*////////////////////////////////下面为弹出的样式//////////////////////////////////*/
+			
+			#div {
+				width: 0px;
+				height: 0px;
+				background-color: #000000;
+				position: fixed;
+				top: 38px;
+				right: 15%;
+			}
+			
+			#popover {
+				background-color: #000000;
+			}
+			/*移除底部或顶部三角,需要在删除此代码*/
+			
+			.mui-popover .mui-popover-arrow:after {
+				width: 0px;
+				/*}
+			.mui-table-view li{
+				background-color: #000000;
+				border-radius: 0;
+			}*/
+				.mui-table-view-cell {
+					background: darkcyan;
+					color: black;
+				}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript" src="js/tiaoz.js" ></script>
+		<header class="mui-bar mui-bar-nav" style="background: rgba(51, 153, 238, 1);">
+			<a class="mui-icon mui-icon-bars mui-pull-left" onclick="webviewAnimation()"style="color: white;"></a>
+			<button class="sosopic" type="button" style="height: 30px;left: 80px;margin-top: 6px;width: 50%;border-radius: 15px;background-color:lightgray;opacity:0.4;border-style: none;position: absolute;">
+		   	  <span class="placeholder " style="margin-top: -10px;float: right;"><span class="mui-icon mui-icon-search"></span><span class="text">搜索</span></span>
+		   </button>
+			<!-- <input type="search" placeholder="COM" style="text-align: center;margin-top: 5px;">
+                    </div></a>-->
+			<a id="test" class="mui-icon mui-icon-plusempty mui-pull-right" style="color: white;"></a>
+		</header>
+		<div class="mui-content" style="margin-bottom: 50px;">
+
+			<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+			<script type="text/javascript" charset="utf-8">
+				mui.init();
+				//轮播图代码
+				$(function() {
+					mui(".mui-slider").slider({
+						interval: 2000
+					});
+
+				});
+				/*、、、、、、弹出*/
+				mui.plusReady(function() {});
+
+				mui('.mui-scroll-wrapper').scroll();
+				mui('body').on('shown', '.mui-popover', function(e) {
+					//console.log('shown', e.detail.id);//detail为当前popover元素
+				});
+				mui('body').on('hidden', '.mui-popover', function(e) {
+					//console.log('hidden', e.detail.id);//detail为当前popover元素
+				});
+			</script>
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="">
+							<img src="img/06.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/07.JPEG">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/08.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/09.jpg">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/12.jpg">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="img/10.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<!--///////////////////////////////////////////////////////////-->
+			<style type="text/css">
+				.flex-container {
+					display: -webkit-flex;
+					display: flex;
+					-webkit-justify-content: space-around;
+					justify-content: space-around;
+					width: 100%;
+					height: 100px;
+					/*background-color: lightgrey;*/
+				}
+				
+				.DHL {
+					text-align: center;
+					height: 50px;
+					width: 50px;
+					/*	border-radius: 50%;*/
+					background: rgba(255, 205, , );
+					/*border-color: solid 1px white;*/
+					/*margin: 10px;*/
+					/*margin-top: 10px;
+					-moz-box-shadow: 0px 7px 9px #333333;
+					-webkit-box-shadow: 0px 7px 9px #333333;
+					box-shadow: 0px 7px 9px #74C0F9;*/
+				}
+			</style>
+			<div id="" class="flex-container">
+
+				<div class="DHL" />
+				<img src="images/lv1.png" style="align-content: center;margin: 8px;" />
+				<span style=""><b>海色</b></span>
+			</div>
+			<div class="DHL" />
+			<img src="images/lvl.png" style="align-content: center;margin: 8px;" />
+			<span><b>天下</b></span>
+		</div>
+		<div class="DHL"  id="ZiXun"/>
+		<img src="images/ziXun.png" style="align-content: center;margin: 8px;" />
+		<span><b>咨询</b></span>
+		</div>
+		<div class="DHL" />
+		<img src="images/lvWeizi.png" style="align-content: center;margin: 8px;" />
+		<span><b>目光</b></span>
+		</div>
+		<div class="DHL" id="meishi">
+		<img src="images/lvFood.png" style="align-content: center;margin: 8px;" />
+		<span><b>美食</b></span>
+		</div>
+
+		</div>
+		<!--/////////-->
+		<div id="" class="flex-container">
+			<div class="DHL" />
+			<img src="images/night.png" style="align-content: center;margin: 8px;" />
+			<span><b>夜色</b></span>
+		</div>
+		<div class="DHL" />
+		<img src="images/quanLv.png" style="align-content: center;margin: 8px;" />
+		<span><b>驴圈</b></span>
+		</div>
+		<div class="DHL" />
+		<img src="images/Wether.png" style="align-content: center;margin: 8px;" />
+		<span><b>天气</b></span>
+		</div>
+		<div class="DHL" id="By">
+		<img src="images/Faly.png" style="align-content: center;margin: 8px;" />
+		<span ><b>出行</b></span>
+		</div>
+		<div class="DHL" />
+		<img src="images/All.png" style="align-content: center;margin: 8px;" />
+		<span><b>All</b></span>
+		</div>
+
+		</div>
+
+		<!--、、//////////////////////////////////////////////////////////-->
+		<!--<div style="height: 15px;background-color: #007AFF;"></div><br />-->
+		
+		<!--<div class="htmleaf-container" style="width:380px;">-->
+
+		<!--广告条-->
+			<div class="container mp30"  style="margin-top: 5px;">
+
+				<div class="row" >
+
+					<div class="col-md-4">
+
+						<div class="panel panel-default">
+
+							<div class="panel-heading">
+
+								<span class="mui-icon mui-icon-starhalf"></span><b style="color:firebrick;">精彩无极限</b></div>
+
+							<div class="panel-body" style="background-color: darkcyan;">
+
+								<div class="row">
+
+									<div class="col-xs-12">
+
+										<ul class="demo1">
+
+											<li class="news-item">
+												<table cellpadding="4">
+													<tr style="height: 80px;">
+														<td><img src="img/38.jpg" width="60" class="img-circle" /></td>
+
+														<td>红霞宫阙老君殿，翠岱天街古圣人...
+															<a href="#" style="color: white;">读泰山</a>
+														</td>
+													</tr>
+												</table>
+											</li>
+
+											<li class="news-item">
+
+												<table cellpadding="4">
+													<tr>
+
+														<td><img src="img/36.jpg" width="60" class="img-circle" /></td>
+
+														<td>青松苍柏衬红枫，北岳如行云雾中...
+															<a href="#"style="color: white;">看恒山</a>
+														</td>
+
+													</tr>
+
+												</table>
+
+											</li>
+
+											<li class="news-item">
+
+												<table cellpadding="4">
+
+													<tr>
+
+														<td><img src="img/34.jpg" width="60" class="img-circle" /></td>
+
+														<td>五峰壁峭屹秦川，崇嶂摩天鸿雁旋...
+															<a href="#"style="color: white;">悸华山</a>
+														</td>
+
+													</tr>
+
+												</table>
+
+											</li>
+
+											<li class="news-item">
+
+												<table cellpadding="4">
+
+													<tr>
+
+														<td><img src="img/33.jpg" width="60" class="img-circle" /></td>
+
+														<td>五岳居中日月峰，登临览胜峻极宫...
+															<a href="#"style="color: white;">颂嵩山...</a>
+														</td>
+
+													</tr>
+
+												</table>
+
+											</li>
+
+											<li class="news-item">
+
+												<table cellpadding="4">
+
+													<tr>
+
+														<td><img src="img/32.jpg" width="60" class="img-circle" /></td>
+
+														<td>层峦隐秀访衡峰，云涌峰移含紫盖，风和雾散现芙蓉...
+															<a href="#"style="color: white;">略衡山</a>
+														</td>
+
+													</tr>
+
+												</table>
+
+											</li>
+
+											<li class="news-item">
+
+												<table cellpadding="4">
+
+													<tr>
+
+														<td><img src="img/31.jpg" width="60" class="img-circle" /></td>
+
+														<td>挂崖磴道窥幽谷，峭壁石林穿碧空...
+															<a href="#"style="color: white;">张家界不姓张</a>
+														</td>
+
+													</tr>
+
+												</table>
+
+											</li>
+
+											<li class="news-item">
+
+												<table cellpadding="4">
+
+													<tr>
+
+														<td><img src="img/30.jpg" width="60" class="img-circle" /></td>
+
+														<td>草木萌芽逢雨露，甘河流水过石桥...
+															<a href="#"style="color: white;">大兴安岭</a>
+														</td>
+
+													</tr>
+
+												</table>
+
+											</li>
+
+										</ul>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="panel-footer">
+								<a href="" style="text-decoration: none;font-size: 20px;">冷咖啡记录</a>
+							</div>
+
+						</div>
+
+					</div>
+					</div>
+				</div>
+<!--//////////////////////////////////////////////////////////////////////-->
+		<div style="font-size: 20px;text-align: center;font-size: 30px;"><span><b>为您推荐</b></span></div>
+		<div style="background-color:;">
+
+			<div class="mui-card">
+				<a href="html/city.html" id="CA">
+					<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(img/12.jpg)"></div>
+				</a>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<!--<p>Posted on January 18, 2016</p>-->
+						<p style="color: #333;">旅途中的人，谁是美食的对手</p>
+					</div>
+				</div>
+			</div>
+			<div class="mui-card">
+				<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(img/09.jpg)"></div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<!--<p>Posted on January 18, 2016</p>-->
+						<p style="color: #333;">北京是中国的文化中心，值得你探索</p>
+					</div>
+				</div>
+			</div>
+			<div id="Gugong" class="mui-card">
+				<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(html/imgs/005.jpg)"></div>
+				<div  class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<!--<p>Posted on January 18, 2016</p>-->
+						<p style="color: #333;">故宫让你感受历史的厚重，文化的底蕴</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!--///////////////////////////-->
+		<ul class="mui-table-view mui-grid-view">
+			<li class="mui-table-view-cell mui-media mui-col-xs-6">
+				<a href="#">
+					<img class="mui-media-object" src="img/01.jpg">
+					<div class="mui-media-body">天坛</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-6">
+				<a href="#">
+					<img class="mui-media-object" src="img/033.jpg">
+					<div class="mui-media-body">长城</div>
+				</a>
+			</li>
+			
+		</ul>
+
+		<div style="height: 50px;"></div>
+
+		</div>
+
+		<div id="div"></div>
+		<div id="popover" class="mui-popover" style="height: 220px;width: 160px;">
+			<div class="mui-popover-arrow"></div>
+			<div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" id="ER">
+						二维码
+					</li>
+					<li class="mui-table-view-cell" id="camera">
+						<a href="#">拍照</a>
+					</li>
+					<li class="mui-table-view-cell msg">
+						<a href="#">发短信</a>
+					</li>
+					<li class="mui-table-view-cell" id="map">
+						<a href="#">地图在手</a>
+					</li>
+					<li class="mui-table-view-cell" id="telephone">
+						<a href="#">客服</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			mui.init()
+			document.getElementById("test").addEventListener("tap", function() {
+				//调用隐藏/显示弹出层
+				mui("#popover").popover('toggle', document.getElementById("div"));
+			})
+			/*$("body").on("tap","a",function(){
+				document.location.href=this.href;
+			})*/
+		</script>
+
+		<script src="js/util.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="html/js/jquery.bootstrap.newsbox.min.js" ></script>
+<script type="text/javascript">
+			$(function() {
+
+				$(".demo1").bootstrapNews({
+
+					newsPerPage: 1,
+
+					autoplay: true,
+
+					pauseOnHover: true,
+
+					direction: 'up',
+
+					newsTickerInterval: 2500,
+
+					onToDo: function() {
+
+						//console.log(this);
+
+					}
+
+				});
+
+				$(".demo2").bootstrapNews({
+
+					newsPerPage: 4,
+
+					autoplay: true,
+
+					pauseOnHover: true,
+
+					navigation: false,
+
+					direction: 'down',
+
+					newsTickerInterval: 2500,
+
+					onToDo: function() {
+
+						//console.log(this);
+
+					}
+
+				});
+
+				$("#demo3").bootstrapNews({
+
+					newsPerPage: 3,
+
+					autoplay: false,
+
+					onToDo: function() {
+
+						//console.log(this);
+
+					}
+
+				});
+
+			});
+		</script>
+
+</html>
+<script>
+	var cmDom=document.getElementById("camera");
+	cmDom.addEventListener("tap",function () {
+		var cm=plus.camera.getCamera(1);
+		cm.captureImage(function (path) {
+			var url="file://"+plus.io.convertLocalFileSystemURL(path);
+			var img="<img width=100 height=100 src="+url+">";
+			msgDom.innerHTML=img;
+		})
+	})
+	/*发送短信*/
+	document.addEventListener("plusready",function(){
+				console.log("plusready");
+			},false);
+			$(function(){
+				mui("body").on("tap",".msg",function () {
+					var msg = plus.messaging.createMessage(plus.messaging.TYPE_SMS);
+					msg.to['13662107089','13362107089'];
+					msg.body='宝哥天下无敌';
+					plus.messaging.sendMessage(msg);
+				});
+			})
+			/*/////////////客服电话*/
+			document.getElementById("telephone").addEventListener("tap",function(){
+            var btnArray=['拨打','取消'];
+            var phone="13662107089";
+            mui.confirm('是否拨打'+phone+'?','提示',btnArray,function(e){
+                if(e.index == 0){
+                    plus.device.dial(phone,false);
+                }
+            });
+        });
+        
+</script>
+<!--<script type="text/javascript" src="js/common.js" ></script>
+<script type="text/javascript" src="js/immersed.js" ></script>-->
